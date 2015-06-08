@@ -20,7 +20,7 @@ public class BookController {
 	private String author4;
 
 	private String publisher;
-	
+
 	private Integer availability; 
 
 	private Book book;
@@ -133,6 +133,14 @@ public class BookController {
 
 	public Long getId() {
 		return id;
+	}
+
+	public Integer getAvailability() {
+		return availability;
+	}
+
+	public void setAvailability(Integer availability) {
+		this.availability = availability;
 	}
 
 
