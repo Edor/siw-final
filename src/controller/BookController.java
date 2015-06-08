@@ -20,6 +20,8 @@ public class BookController {
 	private String author4;
 
 	private String publisher;
+	
+	private Integer availability; 
 
 	private Book book;
 	private List<Book> books;
@@ -30,6 +32,7 @@ public class BookController {
 
 	public String createBook() {
 		this.book = bookFacade.createBook(title,null,publisher,price);
+		this.book.setAvailability(this.availability);
 		return "index"; 
 	}
 
