@@ -17,7 +17,7 @@ public class Book {
 	private String publisher;
 	@Column(nullable=false)
 	private Double price;
-	@Column(nullable=false)
+	@Column(nullable=true)
 	private Integer availability;
 	
 	/* Constructors */
