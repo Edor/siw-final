@@ -15,16 +15,17 @@ public class Book {
 	@ManyToMany(mappedBy="publications", cascade = {CascadeType.ALL})
 	private List<Author> authors;
 	@ManyToMany(mappedBy="publishedBooks", cascade = {CascadeType.ALL})
-	private List<Publisher> publishers;
+	private String publisher;
 	@Column(nullable=false)
 	private Double price;
 	@Column(nullable=false)
 	private Integer availability;
 	
 	/* Constructors */
-	public Book(String title, List<Author> author, Double price) {
+	public Book(String title, List<Author> authors, String publisher, Double price) {
 		this.title = title;
-		this.authors = author;
+		this.authors = authors;
+		this.publisher = publisher;
 		this.price = price;
 	}
 	
@@ -57,12 +58,12 @@ public class Book {
 		this.authors = authors;
 	}
 
-	public List<Publisher> getPublishers() {
-		return publishers;
+	public String getPublisher() {
+		return publisher;
 	}
 
-	public void setPublishers(List<Publisher> publishers) {
-		this.publishers = publishers;
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
 	}
 
 	public Double getPrice() {
