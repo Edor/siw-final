@@ -14,7 +14,6 @@ public class Book {
 	private String title;
 	@ManyToMany(mappedBy="publications", cascade = {CascadeType.ALL})
 	private List<Author> authors;
-	@ManyToMany(mappedBy="publishedBooks", cascade = {CascadeType.ALL})
 	private String publisher;
 	@Column(nullable=false)
 	private Double price;
