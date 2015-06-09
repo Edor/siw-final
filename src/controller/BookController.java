@@ -21,7 +21,7 @@ public class BookController {
 	private BookFacade bookFacade;
 
 	public String createBook() {
-		this.book = bookFacade.createBook(title,null,publisher,price);
+		this.book = bookFacade.createBook(title,publisher,price);
 		this.book.setAvailability(this.availability);
 		return "index"; 
 	}

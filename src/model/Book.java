@@ -21,9 +21,8 @@ public class Book {
 	private Integer availability;
 	
 	/* Constructors */
-	public Book(String title, List<Author> authors, String publisher, Double price) {
+	public Book(String title, String publisher, Double price) {
 		this.title = title;
-		this.authors = authors;
 		this.publisher = publisher;
 		this.price = price;
 	}

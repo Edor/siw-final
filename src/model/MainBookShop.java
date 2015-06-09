@@ -2,6 +2,8 @@ package model;
 
 import javax.persistence.*;
 
+// Questa classe serve ad inizializzare il database. Cambiare il file persistence.xml di conseguenza quando
+// la si intende utilizzare.
 public class MainBookShop {
 
 	/**

@@ -13,8 +13,8 @@ public class BookFacade {
 	@PersistenceContext(unitName = "books")
 	private EntityManager em;
 
-	public  Book createBook(String title, List<Author> authors,String publisher, Double price) {
-		Book book = new Book(title,authors,publisher,price);
+	public  Book createBook(String title, String publisher, Double price) {
+		Book book = new Book(title, publisher,price);
 		em.persist(book);
 		return book;
 	}
