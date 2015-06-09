@@ -12,7 +12,7 @@ public class Book {
 	private Long id;
 	@Column(nullable=false)
 	private String title;
-	@ManyToMany(mappedBy="publications", cascade = {CascadeType.ALL})
+	@ManyToMany(mappedBy="publications", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private List<Author> authors;
 	private String publisher;
 	@Column(nullable=false)

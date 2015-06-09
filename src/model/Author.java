@@ -14,7 +14,7 @@ public class Author {
 	private String middleName;
 	@Column(nullable=false)
 	private String lastName;
-	@ManyToMany(cascade = {CascadeType.ALL})
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private List<Book> publications;
 	
 	/* Constructor */

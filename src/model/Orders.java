@@ -9,9 +9,9 @@ public class Orders {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@ManyToOne(cascade = {CascadeType.ALL})
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private Users user;
-	@OneToMany(cascade = {CascadeType.ALL})
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	@JoinColumn(name="order_id")
 	private List<OrderLine> orderList;
 	private String creationTime;

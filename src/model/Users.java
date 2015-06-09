@@ -19,7 +19,7 @@ public class Users {
 	private String lastName;
 	@Column(nullable=false)
 	private String role;
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	@Column(nullable=true)
 	private Address shippingAddress;
 	@Column(nullable=true)
