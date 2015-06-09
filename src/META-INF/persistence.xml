@@ -20,9 +20,12 @@
 				/> <property name="openjpa.Log" value="DefaultLevel=WARN, Runtime=INFO, Tool=INFO, 
 				SQL=TRACE"/> <property name="openjpa.jdbc.MappingDefaults" value="ForeignKeyDeleteAction=restrict,JoinForeignKeyDeleteAction=restrict"/> 
 				<property name="openjpa.RuntimeUnenhancedClasses" value="supported"/> -->
-			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)" />
-			<property name="javax.persistence.query.timeout" value="300"/>
-			<property name="javax.persistence.lock.timeout" value="300"/>
+			<property name="openjpa.jdbc.SynchronizeMappings"
+				value="buildSchema(foreignKeys=true,schemaAction='dropDB,add')" />
+			<property name="openjpa.jdbc.SchemaFactory" value="native(foreignKeys=true)" />
+			<property name="openjpa.jdbc.MappingDefaults"
+				value="ForeignKeyDeleteAction=restrict, JoinForeignKeyDeleteAction=restrict" />
+			<property name="openjpa.Log" value="DefaultLevel=TRACE,SQL=TRACE" />
 		</properties>
 	</persistence-unit>
 </persistence>
