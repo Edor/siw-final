@@ -15,6 +15,8 @@
 			<h1 align="center">Benvenuti!</h1>
 			<ul>
 				<li><a href="newUsers.jsp">Registration</a></li>
+			</ul><ul>
+				<li><a href="newBook.jsp">New book solo per prova</a></li>
 			</ul>
 			<ul>
 			<li><h:commandLink action="#{bookController.listBooks}"
