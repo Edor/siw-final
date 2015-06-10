@@ -7,22 +7,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Book Shop - Pagina principale</title>
+<title>Book Shop - Main page</title>
 </head>
 <body>
 	<f:view>
 		<h:form>
-			<h1 align="center">Benvenuti!</h1>
+			<h1 align="center">Welcome!</h1>
 			<ul>
-				<li><a href="newUsers.jsp">Registration</a></li>
-			</ul><ul>
-				<li><a href="newBook.jsp">New book solo per prova</a></li>
+				<li><a href="newUser.jsp">Sign up!</a></li>
 			</ul>
 			<ul>
-			<li><h:commandLink action="#{bookController.listBooks}"
+				<li><a href="newBook.jsp">Insert a new book in the database</a></li>
+			</ul>
+			<ul>
+				<li><h:commandLink action="#{bookController.listBooks}"
 						value="List all Books" /></li>
 			</ul>
-			
+
 		</h:form>
 	</f:view>
 </body>

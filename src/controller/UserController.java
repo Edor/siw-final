@@ -7,7 +7,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean
-public class UsersController {
+public class UserController {
 	private Long id;
 	private String email;
 	private String password;
@@ -15,14 +15,15 @@ public class UsersController {
 	private String middleName;
 	private String lastName;
 	private String role;
-	private Address shippingAddress;
+	private String shippingAddress;
 	private Users user;
 
 	@EJB(name= "uFacade")
-	private Facade userFacade;
+	private UserFacade userFacade;
 
 	public String createUser() {
-		this.user = userFacade.createUser( firstName, lastName, email, password, "u");
+		String role = new String("user");
+		this.user = userFacade.createUser(firstName, lastName, email, password, role, shippingAddress);
 		return "index"; 
 	}
 
@@ -84,11 +85,11 @@ public class UsersController {
 		this.role = role;
 	}
 
-	public Address getShippingAddress() {
+	public String getShippingAddress() {
 		return shippingAddress;
 	}
 
-	public void setShippingAddress(Address shippingAddress) {
+	public void setShippingAddress(String shippingAddress) {
 		this.shippingAddress = shippingAddress;
 	}
 
@@ -100,16 +101,15 @@ public class UsersController {
 		this.user = user;
 	}
 
-	public Facade getUsersFacade() {
+	public UserFacade getUsersFacade() {
 		return userFacade;
 	}
 
-	public void setUsersFacade(Facade userFacade) {
+	public void setUsersFacade(UserFacade userFacade) {
 		this.userFacade = userFacade;
 	}
 
 	public Long getId() {
 		return id;
 	}
-
 }

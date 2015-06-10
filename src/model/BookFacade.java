@@ -7,14 +7,14 @@ import javax.persistence.criteria.CriteriaQuery;
 
 import java.util.List;
 
-@Stateless(name = "Facade")
-public class Facade {
+@Stateless(name = "bFacade")
+public class BookFacade {
 
 	@PersistenceContext(unitName = "books")
 	private EntityManager em;
 
-	public  Book createBook(String title, String publisher, Double price) {
-		Book book = new Book(title, publisher,price);
+	public  Book createBook(String title, String publisher, Double price, Integer availability) {
+		Book book = new Book(title, publisher, price, availability);
 		em.persist(book);
 		return book;
 	}
@@ -43,32 +43,4 @@ public class Facade {
 		Book book = em.find(Book.class, id);
 		deleteBook(book);
 	}
-	
-	
-
-	public Users createUser(String firstName, String lastName, String email,
-			String password, String role) {
-		Users user = new Users(firstName, lastName, email, password, role);
-		em.persist(user);
-		return user;
-	}
-	
-	public Users getUser(Long id) {
-		Users user = em.find(Users.class, id);
-		return user;
-	}
-	
-	public void updateUser(Users user) {
-		em.merge(user);
-	}
-
-	private void deleteUser(Users user) {
-		em.remove(user);
-	}
-
-	public void deleteUser(Long id) {
-		Users user = em.find(Users.class, id);
-		deleteUser(user);
-	}
-
 }

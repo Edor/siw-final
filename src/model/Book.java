@@ -17,14 +17,15 @@ public class Book {
 	private String publisher;
 	@Column(nullable=false)
 	private Double price;
-	@Column(nullable=true)
+	@Column(nullable=false)
 	private Integer availability;
 	
 	/* Constructors */
-	public Book(String title, String publisher, Double price) {
+	public Book(String title, String publisher, Double price, Integer availability) {
 		this.title = title;
 		this.publisher = publisher;
 		this.price = price;
+		this.availability = availability;
 	}
 	
 	public Book() {

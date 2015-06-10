@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedBean;
 
 @ManagedBean
 public class BookController {
+	
 	private Long id;
 	private String title;
 	private Double price;
@@ -20,12 +21,15 @@ public class BookController {
 	private Integer availability; 
 	private Book book;
 	private List<Book> books;
-	@EJB(name= "bFacade")
-	private Facade bookFacade;
+	
+	@EJB(name = "bFacade")
+	private BookFacade bookFacade;
+	
+	@EJB(name = "aFacade")
+	private AuthorFacade authorFacade;
 
 	public String createBook() {
-		this.book = bookFacade.createBook(title,publisher,price);
-		this.book.setAvailability(this.availability);
+		this.book = bookFacade.createBook(title, publisher, price, availability);
 		return "book"; 
 	}
 
@@ -116,11 +120,11 @@ public class BookController {
 		this.books = books;
 	}
 
-	public Facade getBookFacade() {
+	public BookFacade getBookFacade() {
 		return bookFacade;
 	}
 
-	public void setBookFacade(Facade bookFacade) {
+	public void setBookFacade(BookFacade bookFacade) {
 		this.bookFacade = bookFacade;
 	}
 
@@ -132,7 +136,21 @@ public class BookController {
 		this.availability = availability;
 	}
 
+	public Long getId() {
+		return id;
+	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public AuthorFacade getAuthorFacade() {
+		return authorFacade;
+	}
+
+	public void setAuthorFacade(AuthorFacade authorFacade) {
+		this.authorFacade = authorFacade;
+	}
 }
 
 
