@@ -1,12 +1,15 @@
 package controller;
 
 import java.util.List;
+
 import model.*;
+
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean
 public class BookController {
+	private Long id;
 	private String title;
 	private Double price;
 	private String author1;
@@ -18,19 +21,19 @@ public class BookController {
 	private Book book;
 	private List<Book> books;
 	@EJB(name= "bFacade")
-	private BookFacade bookFacade;
+	private Facade bookFacade;
 
 	public String createBook() {
 		this.book = bookFacade.createBook(title,publisher,price);
 		this.book.setAvailability(this.availability);
-		return "index"; 
+		return "book"; 
 	}
 
 	public String listBooks() {
 		this.books = bookFacade.getAllBooks();
 		return "books"; 
 	}
-/*
+
 	public String findBook() {
 		this.book = bookFacade.getBook(id);
 		return "book";
@@ -40,7 +43,7 @@ public class BookController {
 		this.book = bookFacade.getBook(id);
 		return "book";
 	}
-*/
+
 	public String getTitle() {
 		return title;
 	}
@@ -113,11 +116,11 @@ public class BookController {
 		this.books = books;
 	}
 
-	public BookFacade getBookFacade() {
+	public Facade getBookFacade() {
 		return bookFacade;
 	}
 
-	public void setBookFacade(BookFacade bookFacade) {
+	public void setBookFacade(Facade bookFacade) {
 		this.bookFacade = bookFacade;
 	}
 

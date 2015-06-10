@@ -11,60 +11,62 @@
 <body>
 	<f:view>
 		<h:form>
-			<div>
+			<div align="center">
 				Title:
 				<h:inputText value="#{bookController.title}" required="true"
 					requiredMessage="Title is mandatory" id="title" />
 				<h:message for="title" />
-			</div>
-			<div>
+			<br><br>
+		
 				Author #1:
 				<h:inputText value="#{bookController.author1}" required="true"
 					requiredMessage="First author is mandatory" id="author1" />
 				<h:message for="author1" />
-			</div>
-			<div>
+			
+			<br><br>
+			
 				Author #2:
 				<h:inputText value="#{bookController.author2}" required="false"
 					id="author2" />
-			</div>
-			<div>
+			
+			<br><br>
 				Author #3:
 				<h:inputText value="#{bookController.author3}" required="false"
 					id="author3" />
-			</div>
-			<div>
+			
+			<br><br>
+			
 				Author #4:
 				<h:inputText value="#{bookController.author4}" required="false"
 					id="author4" />
-			</div>
+			
 
 
-			<div>
+			<br><br>
 				Publisher:
 				<h:inputText value="#{bookController.publisher}" required="true"
 					requiredMessage="Publisher is mandatory" id="publisher" />
 				<h:message for="publisher" />
-			</div>
+			<br><br>
 
-			<div>
+		
 				Price:
 				<h:inputText value="#{bookController.price}" required="true"
 					requiredMessage="Price is mandatory"
 					converterMessage="Price must be a number" id="price" />
 				<h:message for="price" />
-			</div>
-			<div>
+			
+			<br><br>
 				In stock:
 				<h:inputText value="#{bookController.availability}" required="true"
 					requiredMessage="This field is mandatory"
 					converterMessage="This field must be a number" id="availability" />
 				<h:message for="availability" />
-			</div>
+			
 
 
 
-			<div>
+			<br><br>
 				<h:commandButton value="Submit"
 					action="#{bookController.createBook}" />
 			</div>
