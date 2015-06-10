@@ -4,7 +4,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-@Stateless(name = "aFacade")
+@Stateless(name = "uFacade")
 public class UserFacade {
 	
 	@PersistenceContext(unitName = "books")

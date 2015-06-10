@@ -38,7 +38,7 @@
 				<br>
 				<br>
 				<h:commandButton value="Submit"
-					action="#{usersController.createUser}" />
+					action="#{userController.createUser}" />
 			</div>
 
 		</h:form>
