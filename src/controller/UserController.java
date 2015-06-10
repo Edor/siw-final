@@ -26,7 +26,7 @@ public class UserController {
 		this.user = userFacade.createUser(firstName, lastName, email, password, role, shippingAddress);
 		return "index"; 
 	}
-
+	
 	public String findUser() {
 		this.user = userFacade.getUser(id);
 		return "user";

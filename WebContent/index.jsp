@@ -11,10 +11,14 @@
 </head>
 <body>
 	<f:view>
+	
 		<h:form>
-			<h1 align="center">Welcome!</h1>
+			<h1 align="center">Logged as: ${loginController.loggedInEmail}</h1>
 			<ul>
 				<li><a href="newUser.jsp">Sign up!</a></li>
+			</ul>
+			<ul>
+				<li><a href="login.jsp">Sign in!</a></li>
 			</ul>
 			<ul>
 				<li><a href="newBook.jsp">Insert a new book in the database</a></li>

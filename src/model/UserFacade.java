@@ -3,6 +3,7 @@ package model;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 @Stateless(name = "uFacade")
 public class UserFacade {
@@ -21,6 +22,14 @@ public class UserFacade {
 	
 	public Users getUser(Long id) {
 		Users user = em.find(Users.class, id);
+		return user;
+	}
+	
+	public Users getUser(String email) {
+		String qString = "SELECT u FROM Users u WHERE u.email=:email";
+		Query query = em.createQuery(qString);
+		query.setParameter("email", email);
+		Users user = (Users) query.getSingleResult();
 		return user;
 	}
 	
