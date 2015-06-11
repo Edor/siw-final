@@ -13,7 +13,7 @@ public class UserFacade {
 
 	public Users createUser(String firstName, String lastName, String email,
 			String password, String role, String shippingAddress) {
-		Users user = new Users(firstName, lastName, email, password, role);
+		Users user = new Users(firstName, lastName, email.toLowerCase(), password, role);
 		Address address = new Address(shippingAddress, 00000, "Rome", "Italy");
 		user.setShippingAddress(address);
 		em.persist(user);

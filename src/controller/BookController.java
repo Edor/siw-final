@@ -19,7 +19,8 @@ public class BookController {
 	private String author3;
 	private String author4;
 	private String publisher;
-	private Integer availability; 
+	private Integer availability;
+	private Integer qty;
 	private Book book;
 	private List<Book> books;
 	
@@ -36,7 +37,7 @@ public class BookController {
 
 	public String listBooks() {
 		this.books = bookFacade.getAllBooks();
-		return "books"; 
+		return "bookList"; 
 	}
 
 	public String findBook() {
@@ -135,6 +136,14 @@ public class BookController {
 
 	public void setAvailability(Integer availability) {
 		this.availability = availability;
+	}
+
+	public Integer getQty() {
+		return qty;
+	}
+
+	public void setQty(Integer qty) {
+		this.qty = qty;
 	}
 
 	public Long getId() {

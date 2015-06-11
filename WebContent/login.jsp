@@ -14,14 +14,14 @@
 	<f:view>
 		<h:form>
 			<br>Email
-				<h:inputText value="#{loginController.email}" required="true"
+				<h:inputText value="#{sessionController.email}" required="true"
 				requiredMessage="This field is mandatory" id="email" />
 			<h:message for="email" />
 			<br> Password:
-				<h:inputSecret value="#{loginController.password}" required="true"
+				<h:inputSecret value="#{sessionController.password}" required="true"
 				requiredMessage="This field is mandatory" id="password" />
 			<h:message for="password" />
-			<h:commandButton value="Submit" action="#{loginController.doLogin}" />
+			<h:commandButton value="Submit" action="#{sessionController.doLogin}" />
 		</h:form>
 	</f:view>
 </body>

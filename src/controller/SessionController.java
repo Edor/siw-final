@@ -9,7 +9,7 @@ import model.*;
 
 @ManagedBean
 @SessionScoped
-public class LoginController {
+public class SessionController {
 
 	private Users user;
 	private String email;
@@ -27,6 +27,15 @@ public class LoginController {
 		}
 		else
 			return "loginFailed";
+	}
+	
+	public String doLogout() {
+		this.user=null;
+		this.email=null;
+		this.password=null;
+		this.loggedInEmail=null;
+		
+		return "index";
 	}
 
 	public Users getUser() {

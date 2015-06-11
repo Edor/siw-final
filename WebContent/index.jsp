@@ -18,14 +18,14 @@
 				<li><a href="newUser.jsp">Sign up!</a></li>
 			</ul>
 			<ul>
-				<li><a href="login.jsp">Sign in!</a></li>
+				<li><a href="login.jsp">Log in</a></li>
 			</ul>
 			<ul>
 				<li><a href="newBook.jsp">Insert a new book in the database</a></li>
 			</ul>
 			<ul>
 				<li><h:commandLink action="#{bookController.listBooks}"
-						value="List all Books" /></li>
+						value="Complete book list" /></li>
 			</ul>
 
 		</h:form>
