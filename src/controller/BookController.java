@@ -6,10 +6,11 @@ import model.*;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 
 @ManagedBean
 public class BookController {
-	
+	@ManagedProperty(value="#{param.id}")
 	private Long id;
 	private String title;
 	private Double price;

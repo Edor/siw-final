@@ -14,10 +14,9 @@
 
 <h1> ${bookController.book.title}</h1>
 <h2>Details</h2>
-<div>Price: ${bookController.price}</div>
+<div>Price: ${bookController.book.price}</div>
 <div>In stock: ${bookController.book.availability}</div>
 <div>Publisher: ${bookController.book.publisher}</div>
-
 
 
 

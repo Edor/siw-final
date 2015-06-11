@@ -13,9 +13,11 @@
 <body>
 
 	<f:view>
+		<h:form>		
+			<div align="center">
 		<h1>Books</h1>
-		<h:form>
-		<div align="center">
+		
+	
 			<table>
 				<tr>
 					<th>Title</th>
@@ -24,10 +26,12 @@
 				<c:forEach var="book" items="#{bookController.books}">
 					<tr>
 						<td><h:commandLink action="#{bookController.findBook}"
-								value="#{book.title}">
+								value="#{book.title}"  >
 								<f:param name="id" value="#{book.id}" />
 							</h:commandLink></td>
 						<td>${book.price}</td>
+				
+						
 					</tr>
 				</c:forEach>
 			</table>
