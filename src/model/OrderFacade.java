@@ -37,6 +37,7 @@ public class OrderFacade {
 		DateTime date = new DateTime();
 		String dtToString = date.toString("dd/MM/yyyy HH:mm:ss");
 		order.setConfirmationTime(dtToString);
+		order.setCompleted(true);
 		em.merge(order);
 
 		return order;
@@ -45,30 +46,23 @@ public class OrderFacade {
 	public Orders shipOrder(Orders order) {
 		DateTime date = new DateTime();
 		String dtToString = date.toString("dd/MM/yyyy");
-		order.setShippingDay(dtToString);
+		order.setShippingDate(dtToString);
 		em.merge(order);
 
 		return order;
 	}
 
-	public void addOrderLine(Orders order, Long id, Integer qty) {
-		BookFacade bFac = new BookFacade();
-		Book book = bFac.getBook(id);
+	public void addOrderLine(Orders order, Book book, Integer qty) {
 		OrderLine orderLine = new OrderLine(book, qty);
 		order.getOrderList().add(orderLine);
 		em.persist(orderLine);
 	}
 
 	public Orders findNotConfirmedOrder(Users user) {
-		String qString = "SELECT o FROM Orders o WHERE o.user.email=:email AND o.confirmationTime=null";
+		String qString = "SELECT o FROM Orders o WHERE o.user.email=:email AND o.completed=false";
 		Query query = em.createQuery(qString);
 		query.setParameter("email", user.getEmail());
-
-		try {
-			Orders order = (Orders) query.getSingleResult();
-			return order;
-		} catch (NullPointerException e) {
-			return null;
-		}
+		Orders order = (Orders) JpaResultHelper.getSingleResultOrNull(query);
+		return order;
 	}
 }

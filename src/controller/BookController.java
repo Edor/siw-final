@@ -20,7 +20,6 @@ public class BookController {
 	private String author4;
 	private String publisher;
 	private Integer availability;
-	private Integer qty;
 	private Book book;
 	private List<Book> books;
 	
@@ -136,14 +135,6 @@ public class BookController {
 
 	public void setAvailability(Integer availability) {
 		this.availability = availability;
-	}
-
-	public Integer getQty() {
-		return qty;
-	}
-
-	public void setQty(Integer qty) {
-		this.qty = qty;
 	}
 
 	public Long getId() {

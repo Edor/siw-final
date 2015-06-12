@@ -17,6 +17,7 @@ public class Orders {
 	private String creationTime;
 	private String confirmationTime;
 	private String shippingDate;
+	private boolean completed = false;
 	
 	/* Constructors */
 	public Orders() {
@@ -72,11 +73,20 @@ public class Orders {
 		this.confirmationTime = confirmationTime;
 	}
 
-	public String getShippingDay() {
+	public String getShippingDate() {
 		return shippingDate;
 	}
 
-	public void setShippingDay(String shippingDay) {
-		this.shippingDate = shippingDay;
+	public void setShippingDate(String shippingDate) {
+		this.shippingDate = shippingDate;
 	}
+
+	public boolean isCompleted() {
+		return completed;
+	}
+
+	public void setCompleted(boolean completed) {
+		this.completed = completed;
+	}
+	
 }

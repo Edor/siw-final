@@ -17,17 +17,18 @@
 		<div>In stock: ${bookController.book.availability}</div>
 		<div>Publisher: ${bookController.book.publisher}</div>
 		<h:form>
-			Quantity to purchase: <h:inputText
-				value="#{shoppingCartController.qty}" required="true"
-				requiredMessage="You must choose a quantity"
+			Quantity to purchase: <h:inputText value="#{sessionController.qty}"
+				required="true" requiredMessage="You must choose a quantity"
 				converterMessage="This field must be a number" id="qty" />
 			<h:message for="qty" />
 			<h:commandButton value="Buy it now"
-				action="#{bookController.createOrderLine}" />
+				action="#{sessionController.createOrderLine}" />
+			<f:param name="book" value="#{bookController.book}" />
+			<hr>
+			<br>
+			<h:commandLink action="#{bookController.listBooks}"
+				value="Complete book list" />
 		</h:form>
-		<hr>
-		<br>
-		<a href="bookList.jsp">Book list</a>
 		<br>
 		<a href="newBook.jsp">Insert another book in the database</a>
 		<br>

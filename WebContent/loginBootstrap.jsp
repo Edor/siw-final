@@ -55,17 +55,17 @@ body {
 	border: 0;
 	height: 1px;
 	background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0),
-		rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+		rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0) );
 	background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0),
-		rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+		rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0) );
 	background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0),
-		rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+		rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0) );
 	background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0),
-		rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+		rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0) );
 }
 
-.panel-login input[type="text"], .panel-login input[type="email"],
-	.panel-login input[type="password"] {
+.panel-login input[type="text"],.panel-login input[type="email"],.panel-login input[type="password"]
+	{
 	height: 45px;
 	border: 1px solid #ddd;
 	font-size: 16px;
@@ -74,7 +74,7 @@ body {
 	transition: all 0.1s linear;
 }
 
-.panel-login input:hover, .panel-login input:focus {
+.panel-login input:hover,.panel-login input:focus {
 	outline: none;
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
@@ -94,7 +94,7 @@ body {
 	border-color: #59B2E6;
 }
 
-.btn-login:hover, .btn-login:focus {
+.btn-login:hover,.btn-login:focus {
 	color: #fff;
 	background-color: #53A3CD;
 	border-color: #53A3CD;
@@ -109,7 +109,6 @@ body {
 	font: bold 26px Comic Sans MS;
 	color: #53A3CD;
 }
-    
 </style>
 
 <title>Book Shop - Login</title>
@@ -132,21 +131,20 @@ body {
 									<h:outputLabel for="email" value="E-mail" styleClass="mail1" />
 									<h:inputText value="#{sessionController.email}" id="email"
 										required="true" styleClass="form-control" tabindex="1"
-										label="email" requiredMessage="This field is mandatory"/>
+										label="email" requiredMessage="This field is mandatory" />
 									<div align="right" style="right: 5">
-									
-									<h:message for="email" styleClass="alert alert-danger"/>
-</div>
+
+										<h:message for="email" styleClass="alert alert-danger" />
+									</div>
 								</div>
 								<div class="form-group">
 									<h:outputLabel for="password" value="Password"
 										styleClass="mail1" />
 									<h:inputSecret value="#{sessionController.password}"
 										id="password" required="true" styleClass="form-control"
-										tabindex="1" label="password" requiredMessage="This field is mandatory" />
-
+										tabindex="1" label="password"
+										requiredMessage="This field is mandatory" />
 									<h:message for="password" styleClass="alert alert-danger" />
-
 								</div>
 								<div class="form-group text-center">
 									<input type="checkbox" tabindex="3" class="" name="remember"
@@ -168,7 +166,6 @@ body {
 									</div>
 								</div>
 							</h:form>
-
 						</div>
 					</div>
 				</div>

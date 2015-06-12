@@ -9,7 +9,7 @@
 <title>Book Shop - Login successful</title>
 </head>
 <body>
-Welcome back, ${loginController.user.firstName}!
+Welcome back, ${sessionController.user.firstName}!
 <br><a href="index.jsp">Go back to the main page</a>
 </body>
 </html>

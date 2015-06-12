@@ -13,7 +13,7 @@
 	<f:view>
 	
 		<h:form>
-			<h1 align="center">Logged as: ${loginController.loggedInEmail}</h1>
+			<h1 align="center">Logged as: ${sessionController.loggedInEmail}</h1>
 			<ul>
 				<li><a href="newUserBootstrap.jsp">Sign up!</a></li>
 			</ul>
