@@ -33,6 +33,7 @@
 							<td><h:commandLink action="#{bookController.findBook}"
 									value="Buy it now">
 									<f:param name="id" value="#{book.id}" />
+									<!-- <f:setPropertyActionListener target="#{sessionController.bookId}" value="#{book.id}" /> -->
 								</h:commandLink></td>
 						</tr>
 					</c:forEach>

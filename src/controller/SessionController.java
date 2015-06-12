@@ -16,7 +16,7 @@ public class SessionController {
 	private String password;
 	private String loggedInEmail;
 	private Integer qty;
-	private Book book;
+	private Long bookId;
 	private Orders order;
 
 	@EJB(name = "uFacade")
@@ -46,7 +46,7 @@ public class SessionController {
 	
 	public String createOrderLine() {
 		this.order = orderFacade.retrieveOrder(this.user);
-		orderFacade.addOrderLine(this.order, this.book, this.qty);
+		orderFacade.addOrderLine(this.order, this.bookId, this.qty);
 		return "index";
 	}
 
@@ -98,12 +98,12 @@ public class SessionController {
 		this.qty = qty;
 	}
 
-	public Book getBook() {
-		return book;
+	public Long getBookId() {
+		return bookId;
 	}
 
-	public void setBook(Book book) {
-		this.book = book;
+	public void setBookId(Long bookId) {
+		this.bookId = bookId;
 	}
 
 	public Orders getOrder() {

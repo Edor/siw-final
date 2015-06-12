@@ -23,9 +23,11 @@
 			<h:message for="qty" />
 			<h:commandButton value="Buy it now"
 				action="#{sessionController.createOrderLine}" />
-			<f:param name="book" value="#{bookController.book}" />
-			<hr>
-			<br>
+			<f:param name="bookId" value="#{bookController.book.id}" />
+		</h:form>
+		<hr>
+		<br>
+		<h:form>
 			<h:commandLink action="#{bookController.listBooks}"
 				value="Complete book list" />
 		</h:form>

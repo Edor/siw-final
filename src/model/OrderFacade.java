@@ -47,7 +47,9 @@ public class OrderFacade {
 		return order;
 	}
 
-	public void addOrderLine(Orders order, Book book, Integer qty) {
+	public void addOrderLine(Orders order, Long bookId, Integer qty) {
+		BookFacade bFac = new BookFacade();
+		Book book = bFac.getBook(bookId);
 		OrderLine orderLine = new OrderLine(book, qty);
 		order.getOrderList().add(orderLine);
 		//em.merge(order) crea due istanze di orderLine. Ho rimosso merge(order) e tenuto persist(orderLine). Da provare
