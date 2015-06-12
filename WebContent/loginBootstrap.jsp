@@ -133,7 +133,7 @@ body {
 									<h:inputText value="#{sessionController.email}" id="email"
 										required="true" styleClass="form-control" tabindex="1"
 										label="email" requiredMessage="This field is mandatory"/>
-									<div align="left">
+									<div align="right" style="right: 5">
 									
 									<h:message for="email" styleClass="alert alert-danger"/>
 </div>
