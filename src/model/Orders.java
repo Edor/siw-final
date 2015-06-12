@@ -1,6 +1,7 @@
 package model;
 
        
+import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.*;
 
@@ -9,9 +10,9 @@ public class Orders {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@ManyToOne(cascade = {CascadeType.ALL})
 	private Users user;
-	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToMany(cascade = {CascadeType.ALL})
 	@JoinColumn(name="order_id")
 	private List<OrderLine> orderList;
 	private String creationTime;
@@ -21,7 +22,7 @@ public class Orders {
 	
 	/* Constructors */
 	public Orders() {
-		
+		this.orderList = new LinkedList<OrderLine>();
 	}
 	
 	/* Getters & Setters */

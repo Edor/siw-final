@@ -26,8 +26,8 @@ public class SessionController {
 	private OrderFacade orderFacade;
 
 	public String doLogin() {
-		this.user = userFacade.getUser(email);
-		if ((this.user != null) && (this.user.getPassword().equals(this.password))) {
+		this.user = this.userFacade.getUser(email);
+		if (this.userFacade.checkPsw(this.user, password)) {
 			this.loggedInEmail = this.email;
 			return "loginSuccessful";
 		}
@@ -45,7 +45,7 @@ public class SessionController {
 	}
 	
 	public String createOrderLine() {
-		this.order = orderFacade.createOrder(this.user);
+		this.order = orderFacade.retrieveOrder(this.user);
 		orderFacade.addOrderLine(this.order, this.book, this.qty);
 		return "index";
 	}

@@ -8,15 +8,15 @@ public class OrderLine {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@ManyToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name="book_id")
-	private Book item;
+	private Book book;
 	@Column(nullable=false)
 	private Integer qty;
 	
 	/* Constructor */
-	public OrderLine(Book item, Integer qty) {
-		this.item = item;
+	public OrderLine(Book book, Integer qty) {
+		this.book = book;
 		this.qty = qty;
 	}
 	
@@ -33,12 +33,12 @@ public class OrderLine {
 		this.id = id;
 	}
 
-	public Book getItem() {
-		return item;
+	public Book getBook() {
+		return book;
 	}
 
-	public void setItem(Book item) {
-		this.item = item;
+	public void setBook(Book book) {
+		this.book = book;
 	}
 
 	public Integer getQty() {

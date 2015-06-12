@@ -29,7 +29,7 @@ public class UserFacade {
 		String qString = "SELECT u FROM Users u WHERE u.email=:email";
 		Query query = em.createQuery(qString);
 		query.setParameter("email", email);
-		Users user = (Users) query.getSingleResult();
+		Users user = (Users) JpaResultHelper.getSingleResultOrNull(query);
 		return user;
 	}
 	
@@ -44,5 +44,11 @@ public class UserFacade {
 	public void deleteUser(Long id) {
 		Users user = em.find(Users.class, id);
 		deleteUser(user);
+	}
+	
+	public boolean checkPsw(Users user, String typedIn) {
+		if (user==null) return false;
+		if (user.getPassword().equals(typedIn)) return true;
+		return false;
 	}
 }

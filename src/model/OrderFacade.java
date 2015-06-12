@@ -1,7 +1,5 @@
 package model;
 
-import java.util.LinkedList;
-import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +13,7 @@ public class OrderFacade {
 	@PersistenceContext(unitName = "books")
 	private EntityManager em;
 
-	public Orders createOrder(Users user) {
+	public Orders retrieveOrder(Users user) {
 		if (findNotConfirmedOrder(user)!=null) return findNotConfirmedOrder(user);
 
 		Orders order = new Orders();
@@ -24,9 +22,6 @@ public class OrderFacade {
 		order.setCreationTime(dtToString);
 
 		order.setUser(user);
-
-		List<OrderLine> orderLines = new LinkedList<OrderLine>();
-		order.setOrderList(orderLines);
 
 		em.persist(order);
 
@@ -55,6 +50,7 @@ public class OrderFacade {
 	public void addOrderLine(Orders order, Book book, Integer qty) {
 		OrderLine orderLine = new OrderLine(book, qty);
 		order.getOrderList().add(orderLine);
+		//em.merge(order) crea due istanze di orderLine. Ho rimosso merge(order) e tenuto persist(orderLine). Da provare
 		em.persist(orderLine);
 	}
 
