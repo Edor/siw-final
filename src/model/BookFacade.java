@@ -29,7 +29,7 @@ public class BookFacade {
 		String qString = "SELECT b FROM Book b WHERE u.title=:title";
 		Query query = em.createQuery(qString);
 		query.setParameter("title", title);
-		Book book = (Book) query.getSingleResult();
+		Book book = (Book) JpaResultHelper.getSingleResultOrNull(query);
 		
 		return book;
 	}

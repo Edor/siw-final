@@ -22,8 +22,10 @@
 				converterMessage="This field must be a number" id="qty" />
 			<h:message for="qty" />
 			<h:commandButton value="Buy it now"
-				action="#{sessionController.createOrderLine}" />
-			<f:param name="bookId" value="#{bookController.book.id}" />
+				action="#{sessionController.createOrderLine}">
+			<f:setPropertyActionListener value="#{bookController.book.id}"
+				target="#{sessionController.bookId}" />
+			</h:commandButton>
 		</h:form>
 		<hr>
 		<br>
