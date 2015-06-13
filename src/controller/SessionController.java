@@ -2,8 +2,8 @@ package controller;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-
 import model.*;
 
 @ManagedBean
@@ -14,6 +14,8 @@ public class SessionController {
 	private String password;
 	private String loggedInEmail;
 	private Integer qty;
+	
+	@ManagedProperty("#{bookController.id}")
 	private Long bookId;
 	private Orders order;
 
