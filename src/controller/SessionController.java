@@ -2,7 +2,6 @@ package controller;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import model.*;
 
@@ -14,9 +13,7 @@ public class SessionController {
 	private String password;
 	private String loggedInEmail;
 	private Integer qty;
-	
-	@ManagedProperty("#{bookController.id}")
-	private Long bookId;
+	private Book book;
 	private Orders order;
 
 	@EJB(name = "uFacade")
@@ -46,7 +43,7 @@ public class SessionController {
 	public String createOrderLine() {
 		
 		this.order = orderFacade.retrieveOrder(this.user);
-		orderFacade.addOrderLine(this.order, this.bookId, this.qty);
+		orderFacade.addOrderLine(this.order, this.book, this.qty);
 		return "index";
 	}
 
@@ -99,12 +96,12 @@ public class SessionController {
 		this.qty = qty;
 	}
 
-	public Long getBookId() {
-		return bookId;
+	public Book getBook() {
+		return book;
 	}
 
-	public void setBookId(Long bookId) {
-		this.bookId = bookId;
+	public void setBook(Book book) {
+		this.book = book;
 	}
 
 	public Orders getOrder() {
