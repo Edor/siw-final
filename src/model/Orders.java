@@ -24,6 +24,7 @@ public class Orders {
 	public Orders() {
 		this.orderList = new LinkedList<OrderLine>();
 	}
+		
 	
 	/* Getters & Setters */
 	public String getCreationTime() {

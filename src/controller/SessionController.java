@@ -4,13 +4,11 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import model.UserFacade;
 import model.*;
 
 @ManagedBean
 @SessionScoped
 public class SessionController {
-
 	private Users user;
 	private String email;
 	private String password;
@@ -43,13 +41,14 @@ public class SessionController {
 		
 		return "index";
 	}
-	
 	public String createOrderLine() {
+		
 		this.order = orderFacade.retrieveOrder(this.user);
 		orderFacade.addOrderLine(this.order, this.bookId, this.qty);
 		return "index";
 	}
 
+	
 	public Users getUser() {
 		return user;
 	}
