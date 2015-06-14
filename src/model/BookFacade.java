@@ -21,7 +21,12 @@ public class BookFacade {
 	}
 
 	public Book getBook(Long id) {
-		Book book = em.find(Book.class, id);
+		Book book;
+		try { 
+			book = em.find(Book.class, id);
+		} catch (NullPointerException e) {
+			return null;
+		}
 		return book;
 	}
 	

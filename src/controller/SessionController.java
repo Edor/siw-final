@@ -12,15 +12,9 @@ public class SessionController {
 	private String email;
 	private String password;
 	private String loggedInEmail;
-	private Integer qty;
-	private Book book;
-	private Orders order;
 
 	@EJB(name = "uFacade")
 	private UserFacade userFacade;
-	
-	@EJB(name = "oFacade")
-	private OrderFacade orderFacade;
 
 	public String doLogin() {
 		this.user = this.userFacade.getUser(email);
@@ -40,13 +34,6 @@ public class SessionController {
 		
 		return "index";
 	}
-	public String createOrderLine() {
-		
-		this.order = orderFacade.retrieveOrder(this.user);
-		orderFacade.addOrderLine(this.order, this.book, this.qty);
-		return "index";
-	}
-
 	
 	public Users getUser() {
 		return user;
@@ -86,37 +73,5 @@ public class SessionController {
 
 	public void setUserFacade(UserFacade userFacade) {
 		this.userFacade = userFacade;
-	}
-
-	public Integer getQty() {
-		return qty;
-	}
-
-	public void setQty(Integer qty) {
-		this.qty = qty;
-	}
-
-	public Book getBook() {
-		return book;
-	}
-
-	public void setBook(Book book) {
-		this.book = book;
-	}
-
-	public Orders getOrder() {
-		return order;
-	}
-
-	public void setOrder(Orders order) {
-		this.order = order;
-	}
-
-	public OrderFacade getOrderFacade() {
-		return orderFacade;
-	}
-
-	public void setOrderFacade(OrderFacade orderFacade) {
-		this.orderFacade = orderFacade;
 	}
 }

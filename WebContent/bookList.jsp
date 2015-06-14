@@ -23,17 +23,15 @@
 						<th>Title</th>
 						<th>Price</th>
 						<th>Availability</th>
-						<th></th>
 					</tr>
 					<c:forEach var="book" items="#{bookController.books}">
 						<tr>
-							<td>${book.title}</td>
+							<td><h:commandLink action="#{bookController.findBook}"
+									value="#{book.title}">
+									<f:param name="id" value="#{book.id}" />
+								</h:commandLink></td>
 							<td>${book.price}</td>
 							<td>${book.availability}</td>
-							<td><h:commandButton action="#{bookController.findBook}"
-									value="Buy it now">
-									<f:param name="id" value="#{book.id}" />
-								</h:commandButton></td>
 						</tr>
 					</c:forEach>
 				</table>

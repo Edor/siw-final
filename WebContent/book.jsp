@@ -16,13 +16,14 @@
 		<div>Price: ${bookController.book.price}</div>
 		<div>In stock: ${bookController.book.availability}</div>
 		<div>Publisher: ${bookController.book.publisher}</div>
+		<div>ID prova: ${bookController.id}</div>
 		<h:form>
-			Quantity to purchase: <h:inputText value="#{sessionController.qty}"
+			Quantity to purchase: <h:inputText value="#{bookController.qty}"
 				required="true" requiredMessage="You must choose a quantity"
 				converterMessage="This field must be a number" id="qty" />
 			<h:message for="qty" />
 			<h:commandButton value="Buy it now"
-				action="#{sessionController.createOrderLine}" />
+				action="#{bookController.createOrderLine}" />
 		</h:form>
 		<hr>
 		<br>
