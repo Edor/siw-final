@@ -1,41 +1,96 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Book Shop - ${bookController.book.title}</title>
+<title>Book ${bookController.book.title}</title>
 </head>
 <body>
 	<f:view>
-		<h1>${bookController.book.title}</h1>
-		<h2>Details</h2>
-		<div>Price: ${bookController.book.price}</div>
-		<div>In stock: ${bookController.book.availability}</div>
-		<div>Publisher: ${bookController.book.publisher}</div>
-		<div>ID prova: ${bookController.id}</div>
-		<h:form>
-			Quantity to purchase: <h:inputText value="#{bookController.qty}"
-				required="true" requiredMessage="You must choose a quantity"
-				converterMessage="This field must be a number" id="qty" />
-			<h:message for="qty" />
-			<h:commandButton value="Buy it now"
-				action="#{bookController.createOrderLine}" />
-		</h:form>
-		<hr>
-		<br>
-		<h:form>
-			<h:commandLink action="#{bookController.listBooks}"
-				value="Complete book list" />
-		</h:form>
-		<br>
-		<a href="newBook.jsp">Insert another book in the database</a>
-		<br>
-		<a href="index.jsp">Go back to the main page</a>
-	</f:view>
+		<jsp:include page="header.jsp" />
 
+		<div align="center">
+			<h2>${bookController.book.title}</h2>
+			<h3>Dettagli</h3>
+			<div>Codice: ${bookController.book.isbn}</div>
+			<div>
+				Price:
+				<h:outputText id="price" value="#{bookController.book.price}">
+					<f:convertNumber currencyCode="EUR" groupingUsed="true"
+						maxFractionDigits="2" type="currency" />
+				</h:outputText>
+			</div>
+			<div>Availability: ${bookController.book.availability}</div>
+			<div>Publisher: ${bookController.book.publisher}</div>
+
+			<c:if test="${not empty bookController.book.authors}">
+				<div class="form-group">
+					<label for="listAuthors"
+						class="col-sm-1 control-label col-lg-offset-4">authors</label>
+					<div class="col-sm-2">
+						<h:selectOneMenu styleClass="form-control" id="listAuthorsr">
+							<c:forEach var="authors" items="#{bookController.book.authors}">
+								<f:selectItem itemLabel="#{authors.firstName}" />
+							</c:forEach>
+						</h:selectOneMenu>
+					</div>
+				</div>
+				<br>
+				<br>
+				<hr>
+			</c:if>
+
+			<!-- Sono un cliente (posso vedere ciò quando c'è un ordine corrente "aperto"!)-->
+			<c:if test="${currentOrder != null && currentOrder.chiuso == false}">
+				<h:form styleClass="form-horizontal">
+					<div>
+						<h4>Add book all'ordine corrente n°${currentOrder.id}</h4>
+					</div>
+					<div class="form-group">
+						<label for="quantity"
+							class="col-sm-1 control-label col-lg-offset-4">Qty </label>
+						<div class="col-sm-2">
+							<h:inputText styleClass="form-control"
+								value="#{orderController.quantity}" required="true"
+								requiredMessage="La quantita' e' obbligatoria!"
+								validatorMessage="La quantita' non puo' esser negativa!"
+								converterMessage="La quantita' deve essere un numero!"
+								id="quantity">
+								<f:validateLongRange minimum="1" />
+							</h:inputText>
+							<h:message for="quantity" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-5 col-sm-2">
+							<h:commandButton styleClass="btn btn-primary"
+								action="#{orderController.addOrderLine}"
+								value="Aggiungi all'ordine corrente" />
+						</div>
+					</div>
+				</h:form>
+			</c:if>
+
+			<!-- Sono un amministratore -->
+			<c:if test="${administratorController.currentAdministrator != null}">
+				<h:form styleClass="form-horizontal">
+					<div class="form-group">
+						<div class="col-sm-offset-4 col-sm-2">
+							<h:commandButton styleClass="btn btn-warning"
+								action="#{administratorController.modifyProduct}"
+								value="Modifica" />
+						</div>
+						<div class="col-sm-2">
+							<h:commandButton styleClass="btn btn-danger"
+								action="#{productController.deleteProduct}" value="Elimina" />
+						</div>
+					</div>
+				</h:form>
+			</c:if>
+		</div>
+	</f:view>
 </body>
 </html>

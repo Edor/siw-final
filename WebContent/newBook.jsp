@@ -2,60 +2,103 @@
 	pageEncoding="US-ASCII"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Book Shop - New book</title>
+<title>New Book</title>
 </head>
 <body>
 	<f:view>
-		<h:form>
-			<div align="center">
-				Title:
-				<h:inputText value="#{bookController.title}" required="true"
-					requiredMessage="Title is mandatory" id="title" />
-				<h:message for="title" />
-				<br>
-				<br> Author #1:
-				<h:inputText value="#{bookController.author1}" required="true"
-					requiredMessage="First author is mandatory" id="author1" />
-				<h:message for="author1" />
-				<br>
-				<br> Author #2:
-				<h:inputText value="#{bookController.author2}" required="false"
-					id="author2" />
-				<br>
-				<br> Author #3:
-				<h:inputText value="#{bookController.author3}" required="false"
-					id="author3" />
-				<br>
-				<br> Author #4:
-				<h:inputText value="#{bookController.author4}" required="false"
-					id="author4" />
-				<br>
-				<br> Publisher:
-				<h:inputText value="#{bookController.publisher}" required="true"
-					requiredMessage="Publisher is mandatory" id="publisher" />
-				<h:message for="publisher" />
-				<br>
-				<br> Price:
-				<h:inputText value="#{bookController.price}" required="true"
-					requiredMessage="Price is mandatory"
-					converterMessage="Price must be a number" id="price" />
-				<h:message for="price" />
-				<br>
-				<br> In stock:
-				<h:inputText value="#{bookController.availability}" required="true"
-					requiredMessage="This field is mandatory"
-					converterMessage="This field must be a number" id="availability" />
-				<h:message for="availability" />
-				<br>
-				<br>
-				<h:commandButton value="Submit"
-					action="#{bookController.createBook}" />
-			</div>
-		</h:form>
+
+
+		<div align="center">
+
+			<h:form id="newBook" styleClass="form-horizontal">
+				<h:message for="createBook" styleClass="error alert alert-danger" />
+				<div>
+					<h1>Inserimento nuovo Book</h1>
+				</div>
+				<div class="form-group">
+					<label for="name" class="col-sm-1 control-label col-lg-offset-4">Title</label>
+					<div class="col-sm-2">
+						<h:inputText styleClass="form-control"
+							value="#{bookController.title}" required="true"
+							requiredMessage="Il titolo e' obbligatorio!" id="titlr" />
+						<h:message for="title" style="color:red" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="isbn" class="col-sm-1 control-label col-lg-offset-4">ISBN</label>
+					<div class="col-sm-2">
+						<h:inputText styleClass="form-control"
+							value="#{bookController.isbn}" required="true"
+							requiredMessage="Il isbn  e' obbligatorio!" id="isbn" />
+						<h:message for="isbn" style="color:red" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="price" class="col-sm-1 control-label col-lg-offset-4">Price</label>
+					<div class="col-sm-2">
+						<h:inputText styleClass="form-control"
+							value="#{bookController.price}" required="true"
+							requiredMessage="Il prezzo e' obbligatorio!"
+							converterMessage="Il prezzo deve essere un numero!" id="price" />
+						<h:message for="price" style="color:red" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="availability"
+						class="col-sm-1 control-label col-lg-offset-4">Availability</label>
+					<div class="col-sm-2">
+						<h:inputText styleClass="form-control"
+							value="#{bookController.availability}" required="true"
+							requiredMessage="La quantita' e' obbligatoria!"
+							converterMessage="La quantita' deve essere un numero!"
+							id="availability" />
+						<h:message for="availability" style="color:red" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="publisher"
+						class="col-sm-1 control-label col-lg-offset-4">Publisher</label>
+					<div class="col-sm-2">
+						<h:inputText styleClass="form-control"
+							value="#{bookController.publisher}" required="true"
+							requiredMessage="Il isbn  e' obbligatorio!" id="publisher" />
+						<h:message for="publisher" style="color:red" />
+					</div>
+				</div>
+				<div>
+					<div class="form-group">
+						<label for="addAuthorList"
+							class="col-sm-1 control-label col-lg-offset-4">Author</label>
+						<div class="col-sm-2">
+							<h:selectOneMenu styleClass="form-control" id="addAuthorList"
+								value="#{bookController.authorName}">
+								<c:forEach var="author"
+									items="#{administratorController.authors}">
+									<f:selectItem itemValue="#{author.code}"
+										itemLabel="#{author.code}" />
+								</c:forEach>
+							</h:selectOneMenu>
+							<h:message for="addAuthorList" style="color:red" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-5 col-sm-2">
+							<h:commandButton id="createBook" styleClass="btn btn-success"
+								value="Submit" action="#{bookController.createBook}" />
+						</div>
+					</div>
+				</div>
+
+
+			</h:form>
+		</div>
+
 	</f:view>
 </body>
 </html>
