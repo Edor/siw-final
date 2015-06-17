@@ -24,7 +24,8 @@
 				<div class="form-group">
 					<label for="name" class="col-sm-1 control-label col-lg-offset-4">Title</label>
 					<div class="col-sm-2">
-						* <h:inputText styleClass="form-control"
+						*
+						<h:inputText styleClass="form-control"
 							value="#{bookController.title}" required="true"
 							requiredMessage="This field is mandatory" id="title" />
 						<h:message for="title" style="color:red" />
@@ -33,7 +34,8 @@
 				<div class="form-group">
 					<label for="isbn" class="col-sm-1 control-label col-lg-offset-4">ISBN</label>
 					<div class="col-sm-2">
-						* <h:inputText styleClass="form-control"
+						*
+						<h:inputText styleClass="form-control"
 							value="#{bookController.isbn}" required="true"
 							requiredMessage="This field is mandatory" id="isbn" />
 						<h:message for="isbn" style="color:red" />
@@ -42,7 +44,8 @@
 				<div class="form-group">
 					<label for="price" class="col-sm-1 control-label col-lg-offset-4">Price</label>
 					<div class="col-sm-2">
-						* <h:inputText styleClass="form-control"
+						*
+						<h:inputText styleClass="form-control"
 							value="#{bookController.price}" required="true"
 							requiredMessage="This field is mandatory"
 							converterMessage="This field must be a number" id="price" />
@@ -53,11 +56,11 @@
 					<label for="availability"
 						class="col-sm-1 control-label col-lg-offset-4">Availability</label>
 					<div class="col-sm-2">
-						* <h:inputText styleClass="form-control"
+						*
+						<h:inputText styleClass="form-control"
 							value="#{bookController.availability}" required="true"
 							requiredMessage="This field is mandatory"
-							converterMessage="This field must be a number"
-							id="availability" />
+							converterMessage="This field must be a number" id="availability" />
 						<h:message for="availability" style="color:red" />
 					</div>
 				</div>
@@ -65,7 +68,8 @@
 					<label for="publisher"
 						class="col-sm-1 control-label col-lg-offset-4">Publisher</label>
 					<div class="col-sm-2">
-						* <h:inputText styleClass="form-control"
+						*
+						<h:inputText styleClass="form-control"
 							value="#{bookController.publisher}" required="true"
 							requiredMessage="This field is mandatory" id="publisher" />
 						<h:message for="publisher" style="color:red" />
@@ -91,7 +95,7 @@
 						<div class="col-sm-offset-5 col-sm-2">
 							<h:commandButton id="createBook" styleClass="btn btn-success"
 								value="Submit" action="#{bookController.createBook}" />
-								Fields marked with an asterisk are mandatory
+							<br> Fields marked with an asterisk are mandatory
 						</div>
 					</div>
 				</div>

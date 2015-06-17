@@ -113,12 +113,12 @@ public class AdministratorController {
 		}
 	}
 
-	
+
 	public String listClosedOrders() {
 		this.orders = orderFacade.getAllOrderClosed();
 		return "adminMenuOrders";
 	}
-	
+
 
 
 	private void resetCustomer(){
