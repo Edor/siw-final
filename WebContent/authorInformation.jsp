@@ -10,12 +10,11 @@
 </head>
 <body>
 	<f:view>
-		<jsp:include page="header.jsp" />
+		<jsp:include page="header.jsp"/>
 		<div align="center">
 			<h1>Details for ${authorController.author.firstName} ${authorController.author.lastName}</h1>
-			<div>middleName: ${authorController.author.middleName}</div>
-			<div>E-mail: ${authorController.author.email}</div>
-			<div>code : ${authorController.author.code}</div>
+			<div>Middle Name: ${authorController.author.middleName}</div>
+			<div>Code : ${authorController.author.code}</div>
 		</div>
 	</f:view>
 </body>
