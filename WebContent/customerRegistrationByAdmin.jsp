@@ -59,7 +59,7 @@
 							styleClass="form-control" />
 						<h:message for="dateOfBirth" style="color:red" />
 					</div>
-					<label for="phoneNumber" class="col-sm-1 control-label">Telefono</label>
+					<label for="phoneNumber" class="col-sm-1 control-label">Phone</label>
 					<div class="col-sm-2">
 						<h:inputText value="#{administratorController.phoneNumber}"
 							required="true" requiredMessage="This field is mandatory" id="phoneNumber"
@@ -68,13 +68,13 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="street" class="col-sm-1 control-label col-lg-offset-3">Via/Piazza</label>
+					<label for="street" class="col-sm-1 control-label col-lg-offset-3">Street</label>
 					<div class="col-sm-2">
 						<h:inputText value="#{administratorController.street}" required="true"
 							requiredMessage="This field is mandatory" id="address_street" styleClass="form-control" />
 						<h:message for="address_street" style="color:red" />
 					</div>
-					<label for="zipcode" class="col-sm-1 control-label">CAP</label>
+					<label for="zipcode" class="col-sm-1 control-label">Zip code</label>
 					<div class="col-sm-2">
 						<h:inputText value="#{administratorController.zipcode}" required="true"
 							requiredMessage="This field is mandatory" id="address_zipcode"
@@ -84,13 +84,13 @@
 				</div>
 				<div class="form-group">
 					<label for="address_city"
-						class="col-sm-1 control-label col-lg-offset-3">Citta'</label>
+						class="col-sm-1 control-label col-lg-offset-3">City</label>
 					<div class="col-sm-2">
 						<h:inputText value="#{administratorController.city}" required="true"
 							requiredMessage="This field is mandatory" id="address_city" styleClass="form-control" />
 						<h:message for="address_city" style="color:red" />
 					</div>
-					<label for="address_country" class="col-sm-1 control-label">Provincia</label>
+					<label for="address_country" class="col-sm-1 control-label">Country</label>
 					<div class="col-sm-2">
 						<h:inputText value="#{administratorController.country}" required="true"
 							requiredMessage="This field is mandatory" id="address_country"
@@ -100,7 +100,7 @@
 				</div>
 				<div class="form-group">
 					<label for="address_state"
-						class="col-sm-1 control-label col-lg-offset-3">Nazione</label>
+						class="col-sm-1 control-label col-lg-offset-3">State</label>
 					<div class="col-sm-2">
 						<h:inputText value="#{administratorController.state}" required="true"
 							requiredMessage="This field is mandatory" id="address_state" styleClass="form-control" />
