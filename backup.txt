@@ -1,0 +1,185 @@
+PGDMP         *                s           books    9.3.5    9.3.5 +    Ô           0    0    ENCODING    ENCODING        SET client_encoding = 'UTF8';
+                       false            Õ           0    0 
+   STDSTRINGS 
+   STDSTRINGS     (   SET standard_conforming_strings = 'on';
+                       false            Ö           1262    1296014    books    DATABASE     …   CREATE DATABASE books WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'Italian_Italy.1252' LC_CTYPE = 'Italian_Italy.1252';
+    DROP DATABASE books;
+             postgres    false                        2615    2200    public    SCHEMA        CREATE SCHEMA public;
+    DROP SCHEMA public;
+             postgres    false            ×           0    0 
+   SCHEMA public    COMMENT     6   COMMENT ON SCHEMA public IS 'standard public schema';
+                  postgres    false    5            Ø           0    0    public    ACL     ¢   REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+                  postgres    false    5            ³            3079    11750    plpgsql 	   EXTENSION     ?   CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+    DROP EXTENSION plpgsql;
+                  false            Ù           0    0    EXTENSION plpgsql    COMMENT     @   COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+                       false    179            «            1259    1306820    address    TABLE     è   CREATE TABLE address (
+    id bigint NOT NULL,
+    city character varying(255),
+    country character varying(255),
+    state character varying(255),
+    street character varying(255) NOT NULL,
+    zipcode character varying(255)
+);
+    DROP TABLE public.address;
+       public         postgres    false    5            ¬            1259    1306828 
+   administrator    TABLE     “   CREATE TABLE administrator (
+    id bigint NOT NULL,
+    nickname character varying(255) NOT NULL,
+    password character varying(255) NOT NULL
+);
+ !   DROP TABLE public.administrator;
+       public         postgres    false    5            ­            1259    1306836    author    TABLE     Õ   CREATE TABLE author (
+    id bigint NOT NULL,
+    code character varying(255),
+    firstname character varying(255) NOT NULL,
+    lastname character varying(255) NOT NULL,
+    middlename character varying(255)
+);
+    DROP TABLE public.author;
+       public         postgres    false    5            ®            1259    1306846    book    TABLE     è   CREATE TABLE book (
+    id bigint NOT NULL,
+    availability integer NOT NULL,
+    isbn character varying(255),
+    price double precision NOT NULL,
+    publisher character varying(255),
+    title character varying(255) NOT NULL
+);
+    DROP TABLE public.book;
+       public         postgres    false    5            ¯            1259    1306856    book_author    TABLE     P   CREATE TABLE book_author (
+    publications_id bigint,
+    authors_id bigint
+);
+    DROP TABLE public.book_author;
+       public         postgres    false    5            °            1259    1306859    customer    TABLE     ]  CREATE TABLE customer (
+    id bigint NOT NULL,
+    dateofbirth date,
+    email character varying(255),
+    firstname character varying(255) NOT NULL,
+    lastname character varying(255),
+    password character varying(255) NOT NULL,
+    phonenumber character varying(255),
+    registrationdate timestamp without time zone,
+    address_id bigint
+);
+    DROP TABLE public.customer;
+       public         postgres    false    5            ª            1259    1296064    openjpa_sequence_table    TABLE     ]   CREATE TABLE openjpa_sequence_table (
+    id smallint NOT NULL,
+    sequence_value bigint
+);
+ *   DROP TABLE public.openjpa_sequence_table;
+       public         postgres    false    5            ±            1259    1306869 	   orderline    TABLE     ’   CREATE TABLE orderline (
+    id bigint NOT NULL,
+    quantity integer,
+    unitprice double precision,
+    order_id bigint,
+    book_id bigint
+);
+    DROP TABLE public.orderline;
+       public         postgres    false    5            ²            1259    1306874    orders    TABLE       CREATE TABLE orders (
+    id bigint NOT NULL,
+    bookcancellato boolean,
+    chiuso boolean,
+    completedtime timestamp without time zone,
+    creationtime timestamp without time zone,
+    evaso boolean,
+    processedtime timestamp without time zone,
+    customer_id bigint
+);
+    DROP TABLE public.orders;
+       public         postgres    false    5            Ê          0    1306820    address 
+   TABLE DATA               E   COPY address (id, city, country, state, street, zipcode) FROM stdin;
+    public       postgres    false    171   ‹0       Ë          0    1306828 
+   administrator 
+   TABLE DATA               8   COPY administrator (id, nickname, password) FROM stdin;
+    public       postgres    false    172   é0       Ì          0    1306836    author 
+   TABLE DATA               D   COPY author (id, code, firstname, lastname, middlename) FROM stdin;
+    public       postgres    false    173   1       Í          0    1306846    book 
+   TABLE DATA               H   COPY book (id, availability, isbn, price, publisher, title) FROM stdin;
+    public       postgres    false    174   P1       Î          0    1306856    book_author 
+   TABLE DATA               ;   COPY book_author (publications_id, authors_id) FROM stdin;
+    public       postgres    false    175   Í1       Ï          0    1306859    customer 
+   TABLE DATA               }   COPY customer (id, dateofbirth, email, firstname, lastname, password, phonenumber, registrationdate, address_id) FROM stdin;
+    public       postgres    false    176   þ1       É          0    1296064    openjpa_sequence_table 
+   TABLE DATA               =   COPY openjpa_sequence_table (id, sequence_value) FROM stdin;
+    public       postgres    false    170   —2       Ð          0    1306869 	   orderline 
+   TABLE DATA               H   COPY orderline (id, quantity, unitprice, order_id, book_id) FROM stdin;
+    public       postgres    false    177   »2       Ñ          0    1306874    orders 
+   TABLE DATA               u   COPY orders (id, bookcancellato, chiuso, completedtime, creationtime, evaso, processedtime, customer_id) FROM stdin;
+    public       postgres    false    178   	3       E           2606    1306827    address_pkey 
+   CONSTRAINT     K   ALTER TABLE ONLY address
+    ADD CONSTRAINT address_pkey PRIMARY KEY (id);
+ >   ALTER TABLE ONLY public.address DROP CONSTRAINT address_pkey;
+       public         postgres    false    171    171            G           2606    1306835    administrator_pkey 
+   CONSTRAINT     W   ALTER TABLE ONLY administrator
+    ADD CONSTRAINT administrator_pkey PRIMARY KEY (id);
+ J   ALTER TABLE ONLY public.administrator DROP CONSTRAINT administrator_pkey;
+       public         postgres    false    172    172            I           2606    1306843    author_pkey 
+   CONSTRAINT     I   ALTER TABLE ONLY author
+    ADD CONSTRAINT author_pkey PRIMARY KEY (id);
+ <   ALTER TABLE ONLY public.author DROP CONSTRAINT author_pkey;
+       public         postgres    false    173    173            M           2606    1306853 	   book_pkey 
+   CONSTRAINT     E   ALTER TABLE ONLY book
+    ADD CONSTRAINT book_pkey PRIMARY KEY (id);
+ 8   ALTER TABLE ONLY public.book DROP CONSTRAINT book_pkey;
+       public         postgres    false    174    174            Q           2606    1306866 
+   customer_pkey 
+   CONSTRAINT     M   ALTER TABLE ONLY customer
+    ADD CONSTRAINT customer_pkey PRIMARY KEY (id);
+ @   ALTER TABLE ONLY public.customer DROP CONSTRAINT customer_pkey;
+       public         postgres    false    176    176            C           2606    1296068    openjpa_sequence_table_pkey 
+   CONSTRAINT     i   ALTER TABLE ONLY openjpa_sequence_table
+    ADD CONSTRAINT openjpa_sequence_table_pkey PRIMARY KEY (id);
+ \   ALTER TABLE ONLY public.openjpa_sequence_table DROP CONSTRAINT openjpa_sequence_table_pkey;
+       public         postgres    false    170    170            U           2606    1306873    orderline_pkey 
+   CONSTRAINT     O   ALTER TABLE ONLY orderline
+    ADD CONSTRAINT orderline_pkey PRIMARY KEY (id);
+ B   ALTER TABLE ONLY public.orderline DROP CONSTRAINT orderline_pkey;
+       public         postgres    false    177    177            W           2606    1306878    orders_pkey 
+   CONSTRAINT     I   ALTER TABLE ONLY orders
+    ADD CONSTRAINT orders_pkey PRIMARY KEY (id);
+ <   ALTER TABLE ONLY public.orders DROP CONSTRAINT orders_pkey;
+       public         postgres    false    178    178            K           2606    1306845 
+   u_author_code 
+   CONSTRAINT     H   ALTER TABLE ONLY author
+    ADD CONSTRAINT u_author_code UNIQUE (code);
+ >   ALTER TABLE ONLY public.author DROP CONSTRAINT u_author_code;
+       public         postgres    false    173    173            O           2606    1306855    u_book_isbn 
+   CONSTRAINT     D   ALTER TABLE ONLY book
+    ADD CONSTRAINT u_book_isbn UNIQUE (isbn);
+ :   ALTER TABLE ONLY public.book DROP CONSTRAINT u_book_isbn;
+       public         postgres    false    174    174            S           2606    1306868    u_customr_email 
+   CONSTRAINT     M   ALTER TABLE ONLY customer
+    ADD CONSTRAINT u_customr_email UNIQUE (email);
+ B   ALTER TABLE ONLY public.customer DROP CONSTRAINT u_customr_email;
+       public         postgres    false    176    176            Y           2606    1306884    book_author_authors_id_fkey 
+   FK CONSTRAINT     ‡   ALTER TABLE ONLY book_author
+    ADD CONSTRAINT book_author_authors_id_fkey FOREIGN KEY (authors_id) REFERENCES author(id) DEFERRABLE;
+ Q   ALTER TABLE ONLY public.book_author DROP CONSTRAINT book_author_authors_id_fkey;
+       public       postgres    false    175    173    1865            X           2606    1306879     book_author_publications_id_fkey 
+   FK CONSTRAINT        ALTER TABLE ONLY book_author
+    ADD CONSTRAINT book_author_publications_id_fkey FOREIGN KEY (publications_id) REFERENCES book(id) DEFERRABLE;
+ V   ALTER TABLE ONLY public.book_author DROP CONSTRAINT book_author_publications_id_fkey;
+       public       postgres    false    1869    174    175            Z           2606    1306889    customer_address_id_fkey 
+   FK CONSTRAINT     ‚   ALTER TABLE ONLY customer
+    ADD CONSTRAINT customer_address_id_fkey FOREIGN KEY (address_id) REFERENCES address(id) DEFERRABLE;
+ K   ALTER TABLE ONLY public.customer DROP CONSTRAINT customer_address_id_fkey;
+       public       postgres    false    176    171    1861            \           2606    1306899    orderline_book_id_fkey 
+   FK CONSTRAINT     {   ALTER TABLE ONLY orderline
+    ADD CONSTRAINT orderline_book_id_fkey FOREIGN KEY (book_id) REFERENCES book(id) DEFERRABLE;
+ J   ALTER TABLE ONLY public.orderline DROP CONSTRAINT orderline_book_id_fkey;
+       public       postgres    false    177    1869    174            [           2606    1306894    orderline_order_id_fkey 
+   FK CONSTRAINT        ALTER TABLE ONLY orderline
+    ADD CONSTRAINT orderline_order_id_fkey FOREIGN KEY (order_id) REFERENCES orders(id) DEFERRABLE;
+ K   ALTER TABLE ONLY public.orderline DROP CONSTRAINT orderline_order_id_fkey;
+       public       postgres    false    1879    178    177            ]           2606    1306904    orders_customer_id_fkey 
+   FK CONSTRAINT        ALTER TABLE ONLY orders
+    ADD CONSTRAINT orders_customer_id_fkey FOREIGN KEY (customer_id) REFERENCES customer(id) DEFERRABLE;
+ H   ALTER TABLE ONLY public.orders DROP CONSTRAINT orders_customer_id_fkey;
+       public       postgres    false    176    178    1873            Ê   N   xœ3µ00äò÷uäÊ¡²ÌDçÄÜ‚ü¤Ôœœ|N.S#tE lhj„PaW‘YVQ”ŸTT`h`À£ÇÅÅ ÂÏ      Ë      xœ3535äLLÉÍÌƒ\1z\\\ E}¨      Ì   .   xœ3570ä442æL,-É/JU0D0¸LÍ
+Œ8--ÌaBFWŒ èÏd      Í   m   xœMŒ1Ã CgÿSp”ÿ©Þ¢è„„”HT)zû’Lõd?[f¢‚ÔÂ1§|‡EŸ¹üIñø”½½×z8Åhc¯N…‰Eéó4æ‰W/6Aßœu€ëø5DÎsž¹õk(O/"?O–Â      Î   !   xœ3575ä4570ä2575‚³ŒA,#®=... m§Ã      Ï   ‰   xœuŒ1ƒ0 gû|€(NâÄd¢K_À‚J‡m*ÞO²"YöÉÒ,Ox|·ýÆ9_ ^ùÓ~0­GÚ€ŒuìƒÀhâ^ûžBGÉF”,š…MÉþö|¬cÝ5Y©£ë;SQå|­™R³¥–r›¿t+2)[D‹‹BÄ¬æ5;      É      xœ3à4300äŠÑãââ N³      Ð   >   xœMÊ±
+À0ÁšFi0¶vÉþs$väËÃ»MTî"<­pû5ð˜¶m,èÊåúÅobÜVL
+þ      Ñ   Q   xœmÌÁ	€@DÑsR…
+lÈ¬L6±+Ø³Ø?êMP˜Ó‡y,‡rJw°y4Œ¹Ýë´øv+<Ÿ¹“«²¼ÿ,#øC§yÆ‹˜¦ªX*     
