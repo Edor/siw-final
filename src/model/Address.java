@@ -1,50 +1,50 @@
 package model;
 
-
 import javax.persistence.*;
 
 @Entity
 public class Address {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@Column(nullable=false)
-	private String address;
-	@Column(nullable=false)
-	private Integer zipCode;
-	@Column(nullable=false)
+
+	@Column(nullable = false)
+	private String street;
+
+	@Column
 	private String city;
-	@Column(nullable=false)
+
+	@Column
 	private String state;
 
-	/* Constructor */
-	public Address(String address, Integer zipCode, String city, String state) {
-		this.address = address;
-		this.zipCode = zipCode;
+	@Column
+	private String zipcode;
+
+	@Column
+	private String country;
+
+	public Address () {}
+
+	public Address (String street, String city, String state, String zipcode, String country) {
+		this.street = street;
 		this.city = city;
 		this.state = state;
-	}
-	
-	public Address() {
-		
+		this.zipcode = zipcode;
+		this.country = country;
 	}
 
-	/* Getters & Setters */
-	public String getAddress() {
-		return address;
+	// ***** Getters and setters *****
+
+	public Long getId() {
+		return id;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public String getStreet() {
+		return street;
 	}
 
-	public Integer getZipCode() {
-		return zipCode;
-	}
-
-	public void setZipCode(Integer zipCode) {
-		this.zipCode = zipCode;
+	public void setStreet(String street) {
+		this.street = street;
 	}
 
 	public String getCity() {
@@ -61,5 +61,21 @@ public class Address {
 
 	public void setState(String state) {
 		this.state = state;
+	}
+
+	public String getZipcode() {
+		return zipcode;
+	}
+
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
 	}
 }

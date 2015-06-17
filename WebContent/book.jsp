@@ -1,9 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>Book ${bookController.book.title}</title>
@@ -14,8 +14,8 @@
 
 		<div align="center">
 			<h2>${bookController.book.title}</h2>
-			<h3>Dettagli</h3>
-			<div>Codice: ${bookController.book.isbn}</div>
+			<h3>Details</h3>
+			<div>ISBN: ${bookController.book.isbn}</div>
 			<div>
 				Price:
 				<h:outputText id="price" value="#{bookController.book.price}">
@@ -29,7 +29,7 @@
 			<c:if test="${not empty bookController.book.authors}">
 				<div class="form-group">
 					<label for="listAuthors"
-						class="col-sm-1 control-label col-lg-offset-4">authors</label>
+						class="col-sm-1 control-label col-lg-offset-4">Authors</label>
 					<div class="col-sm-2">
 						<h:selectOneMenu styleClass="form-control" id="listAuthorsr">
 							<c:forEach var="authors" items="#{bookController.book.authors}">
@@ -80,12 +80,11 @@
 					<div class="form-group">
 						<div class="col-sm-offset-4 col-sm-2">
 							<h:commandButton styleClass="btn btn-warning"
-								action="#{administratorController.modifyProduct}"
-								value="Modifica" />
+								action="#{administratorController.modifyBook}" value="Modifica" />
 						</div>
 						<div class="col-sm-2">
 							<h:commandButton styleClass="btn btn-danger"
-								action="#{productController.deleteProduct}" value="Elimina" />
+								action="#{bookController.deleteBook}" value="Elimina" />
 						</div>
 					</div>
 				</h:form>

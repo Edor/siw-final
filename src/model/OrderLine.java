@@ -1,6 +1,5 @@
 package model;
 
-
 import javax.persistence.*;
 
 @Entity
@@ -8,29 +7,46 @@ public class OrderLine {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@ManyToOne(cascade = {CascadeType.ALL})
-	@JoinColumn(name="book_id")
+
+	@Column
+	private Double unitPrice;
+
+	@Column
+	private Integer quantity;
+
+	@OneToOne(fetch=FetchType.EAGER)
 	private Book book;
-	@Column(nullable=false)
-	private Integer qty;
-	
-	/* Constructor */
-	public OrderLine(Book book, Integer qty) {
-		this.book = book;
-		this.qty = qty;
-	}
-	
+
 	public OrderLine() {
-		
+
 	}
-	
-	/*Getters & Setters */
+
+	public OrderLine(Double unitPrice, Integer quantity, Book book) {
+		this.unitPrice = unitPrice;
+		this.quantity = quantity;
+		this.book = book;
+	}
+
+	// ***** Getters and setters *****
+
 	public Long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public Double getUnitPrice() {
+		return unitPrice;
+	}
+
+	public void setUnitPrice(Double unitPrice) {
+		this.unitPrice = unitPrice;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 	public Book getBook() {
@@ -39,13 +55,5 @@ public class OrderLine {
 
 	public void setBook(Book book) {
 		this.book = book;
-	}
-
-	public Integer getQty() {
-		return qty;
-	}
-
-	public void setQty(Integer qty) {
-		this.qty = qty;
 	}
 }

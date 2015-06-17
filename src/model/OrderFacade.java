@@ -4,61 +4,55 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
 
-import org.joda.time.DateTime;
+import java.util.Calendar;
+import java.util.List;
 
-@Stateless(name = "oFacade")
+@Stateless(name="orderFacade")
 public class OrderFacade {
-
-	@PersistenceContext(unitName = "books")
-	private EntityManager em;
-
-	public Orders retrieveOrder(Users user) {
-		if (findNotConfirmedOrder(user)!=null) return findNotConfirmedOrder(user);
-
-		Orders order = new Orders();
-		DateTime date = new DateTime();
-		String dtToString = date.toString("dd/MM/yyyy HH:mm:ss");
-		order.setCreationTime(dtToString);
-
-		order.setUser(user);
-
+	
+    @PersistenceContext(unitName = "books")
+    private EntityManager em;
+    
+	public Order createOrder(Calendar creationTime, Customer customer) {
+		Order order = new Order(creationTime, customer);
 		em.persist(order);
-
 		return order;
 	}
-
-	public Orders confirmOrder(Orders order) {
-		DateTime date = new DateTime();
-		String dtToString = date.toString("dd/MM/yyyy HH:mm:ss");
-		order.setConfirmationTime(dtToString);
-		order.setCompleted(true);
-		em.merge(order);
-
+	
+	public Order getOrder(Long id) {
+	    Order order = em.find(Order.class, id);
 		return order;
 	}
-
-	public Orders shipOrder(Orders order) {
-		DateTime date = new DateTime();
-		String dtToString = date.toString("dd/MM/yyyy");
-		order.setShippingDate(dtToString);
-		em.merge(order);
-
+	
+	public List<Order> getAllOrder() {
+		CriteriaQuery<Order> cq = em.getCriteriaBuilder().createQuery(Order.class);
+		cq.select(cq.from(Order.class));
+		List<Order> order = em.createQuery(cq).getResultList();
 		return order;
+	
 	}
-
-	public void addOrderLine(Orders order, Book book, Integer qty) {
-		OrderLine orderLine = new OrderLine(book, qty);
-		order.getOrderList().add(orderLine);
-		em.merge(order);
-		//em.persist(orderLine);
+	
+	public List<Order> getAllOrderClosed() {
+		Query q = em.createQuery("SELECT o FROM Order o WHERE o.chiuso = true ORDER BY o.id");
+		List<Order> orders = q.getResultList();
+		return orders;
 	}
+	
+	
 
-	public Orders findNotConfirmedOrder(Users user) {
-		String qString = "SELECT o FROM Orders o WHERE o.user.email=:email AND o.completed=false";
-		Query query = em.createQuery(qString);
-		query.setParameter("email", user.getEmail());
-		Orders order = (Orders) JpaResultHelper.getSingleResultOrNull(query);
-		return order;
+	
+	public void updateOrder(Order order) {
+        em.merge(order);
+	}
+	
+    private void deleteOrder(Order order) {
+        em.remove(order);
+    }
+
+	public void deleteBook(Long id) {
+        Order order = em.find(Order.class, id);
+        deleteOrder(order);
 	}
 }

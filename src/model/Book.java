@@ -1,38 +1,60 @@
 package model;
 
-
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
+
 @Entity
+@NamedQuery(name = "findAllBook", query = "SELECT p FROM Book p")
 public class Book {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@Column(nullable=false)
+
+	@Column(nullable = false)
 	private String title;
-	@ManyToMany(mappedBy="publications", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-	private List<Author> authors;
-	private String publisher;
+
 	@Column(nullable=false)
 	private Double price;
-	@Column(nullable=false)
+
+	private String publisher;
+
+	@Column(unique = true)
+	private String isbn;
+
+	@Column(nullable = false)
 	private Integer availability;
-	
-	/* Constructors */
-	public Book(String title, String publisher, Double price, Integer availability) {
-		this.title = title;
-		this.publisher = publisher;
-		this.price = price;
-		this.availability = availability;
-	}
-	
+
+	@ManyToMany(fetch=FetchType.EAGER)
+	private List<Author> authors;
+
 	public Book() {
-		
 	}
 
-	/* Getters & Setters */
+	public Book(String title, Double price, String publisher, String isbn, Integer availability, Author author) {
+		this.title = title;
+		this.price = price;
+		this.publisher = publisher;
+		this.isbn = isbn;
+		this.availability = availability;
+		this.authors = new ArrayList<Author>();
+		this.authors.add(author);
+	}
+
+	public void addAuthor(Author author){
+		this.authors.add(author);
+		author.addBook(this);
+	}
+
+	public void removeAuthor(Author author) {
+		this.authors.remove(author);
+		author.removeBook(this);
+	}
+
+	//          Getters & Setters        
+
 	public Long getId() {
 		return id;
 	}
@@ -49,12 +71,12 @@ public class Book {
 		this.title = title;
 	}
 
-	public List<Author> getAuthors() {
-		return authors;
+	public Double getPrice() {
+		return price;
 	}
 
-	public void setAuthors(List<Author> authors) {
-		this.authors = authors;
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 
 	public String getPublisher() {
@@ -65,12 +87,12 @@ public class Book {
 		this.publisher = publisher;
 	}
 
-	public Double getPrice() {
-		return price;
+	public String getIsbn() {
+		return isbn;
 	}
 
-	public void setPrice(Double price) {
-		this.price = price;
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
 	}
 
 	public Integer getAvailability() {
@@ -81,4 +103,32 @@ public class Book {
 		this.availability = availability;
 	}
 
+	public List<Author> getAuthors() {
+		return authors;
+	}
+
+	public void setAuthors(List<Author> authors) {
+		this.authors = authors;
+	}
+
+	public boolean equals(Object obj) {
+		Book book = (Book)obj;
+		return this.getIsbn().equals(book.getIsbn());
+	}
+
+	public int hashCode() {
+		return this.isbn.hashCode();
+	}
+
+	public String toString() {
+		final StringBuilder sb = new StringBuilder();
+		sb.append("Book"); 
+		sb.append("{id=").append(id); 
+		sb.append(", Title='").append(title); 
+		sb.append(", price=").append(price); 
+		sb.append(", Publisher='").append(publisher); 
+		sb.append(", isbn='").append(isbn);
+		sb.append("}\n");
+		return sb.toString();
+	}
 }
