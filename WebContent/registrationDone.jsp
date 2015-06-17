@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -8,18 +7,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Registrazione effettuata</title>
+<title>Book Shop - Registration completed</title>
 </head>
 <body>
 	<f:view>
-		<!-- Menù di testa -->
 		<jsp:include page="header.jsp" />
-		<!-- -------------- -->
+
 		<div align="center">
 			<h:form>
-				<span class="error alert alert-success">Registrazione
-					avvenuta con successo! Reindirizzamento alla tua pagina
-					in corso...
+				<span class="error alert alert-success">Registration successful! You will be redirected to a different page shortly...
 				</span>
 				<c:choose>
 					<c:when

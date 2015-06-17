@@ -7,29 +7,27 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Login amministrazione</title>
+<title>Book Shop - Admin login</title>
 </head>
 
 <body>
 	<f:view>
-		<!-- Menu' di testa -->
 		<jsp:include page="header.jsp" />
-		<!-- -------------- -->
 		<div align="center">
 			<h:form id="loginAdministrator" styleClass="form-horizontal">
 				<h:message for="accediAdmin" styleClass="error alert alert-danger" />
 				<div>
-					<h1>Sezione Amministrazione</h1>
+					<h1>Admin section</h1>
 				</div>
 				<div>
-					<h2>Login Amministratore</h2>
+					<h2>Login</h2>
 				</div>
 				<div class="form-group">
 					<label for="nickname"
 						class="col-sm-1 control-label col-lg-offset-4">Nickname</label>
 					<div class="col-sm-2">
 						<h:inputText value="#{administratorController.nickname}"
-							required="true" requiredMessage="Il nickname e' obbligatorio!"
+							required="true" requiredMessage="This field is mandatory"
 							id="nickname" styleClass="form-control" />
 						<h:message for="nickname" style="color:red" />
 					</div>
@@ -38,7 +36,7 @@
 					<label for="email" class="col-sm-1 control-label col-lg-offset-4">Password</label>
 					<div class="col-sm-2">
 						<h:inputSecret value="#{administratorController.password}"
-							required="true" requiredMessage="La password e' obbligatoria!"
+							required="true" requiredMessage="This field is mandatory"
 							id="password" styleClass="form-control" />
 						<h:message for="password" style="color:red" />
 					</div>

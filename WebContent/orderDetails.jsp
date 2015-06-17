@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
@@ -6,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Ordine n° ${currentOrder.id}</title>
+<title>Order # ${currentOrder.id}</title>
 </head>
 <body>
 	<f:view>
@@ -17,9 +19,9 @@
 				<br>
 			</c:if>
 			
-			<h1>Dettagli completi ordine n° ${currentOrder.id }</h1>
+			<h1>Details for order # ${currentOrder.id }</h1>
 
-			<h3>Cliente</h3>
+			<h3>Customer</h3>
 
 			<address>
 				<strong>${currentOrder.customer.firstName}
@@ -29,25 +31,25 @@
 				${currentOrder.customer.address.city},
 				(${currentOrder.customer.address.country})<br>
 				${currentOrder.customer.address.state}<br> <abbr
-					title="Telefono">Tel:</abbr> ${currentOrder.customer.phoneNumber}
+					title="Telefono">Phone:</abbr> ${currentOrder.customer.phoneNumber}
 			</address>
 			<div>
-				Data di Nascita:
+				Day of birth:
 				<h:outputText value="#{currentOrder.customer.dateOfBirth}">
 					<f:convertDateTime dateStyle="medium" locale="it_IT" type="date" />
 				</h:outputText>
 			</div>
 			<div>
-				Data di Registrazione:
+				Registration date:
 				<h:outputText value="#{currentOrder.customer.registrationDate.time}">
 					<f:convertDateTime dateStyle="medium" locale="it_IT" type="both"
 						timeZone="Europe/Rome" />
 				</h:outputText>
 			</div>
 
-			<h3>Ordine n° ${currentOrder.id}</h3>
+			<h3>Order # ${currentOrder.id}</h3>
 			<div>
-				Creato il:
+				Creation time:
 				<h:outputText value="#{currentOrder.creationTime.time}">
 					<f:convertDateTime dateStyle="medium" locale="it_IT" type="both"
 						timeZone="Europe/Rome" />
@@ -55,17 +57,17 @@
 			</div>
 
 			<div>
-				Stato:
+				Status:
 				<c:if test="${currentOrder.chiuso == false}">
-					<span class="label label-danger">Aperto</span>
+					<span class="label label-danger">Open</span>
 				</c:if>
 				<c:choose>
 					<c:when test="${currentOrder.evaso == true}">
-						<span class="label label-success">Evaso</span>
+						<span class="label label-success">Shipped</span>
 					</c:when>
 					<c:otherwise>
 						<c:if test="${currentOrder.chiuso == true}">
-							<span class="label label-warning">Completato</span>
+							<span class="label label-warning">Confirmed</span>
 						</c:if>
 					</c:otherwise>
 				</c:choose>
@@ -73,7 +75,7 @@
 
 			<c:if test="${currentOrder.completedTime != null }">
 				<div>
-					Data Completamento:
+					Confirmation time:
 					<h:outputText value="#{currentOrder.completedTime.time}">
 						<f:convertDateTime dateStyle="medium" locale="it_IT" type="both"
 							timeZone="Europe/Rome" />
@@ -83,7 +85,7 @@
 			
 			<c:if test="${currentOrder.processedTime != null }">
 				<div>
-					Data Spedizione:
+					Shipping day:
 					<h:outputText value="#{currentOrder.processedTime.time}">
 						<f:convertDateTime dateStyle="medium" locale="it_IT" type="both" />
 					</h:outputText>
@@ -93,7 +95,9 @@
 			<c:if test="${currentOrder.bookCancellato == true}">
 			<br>
 				<div>
-					<span class="error alert alert-warning">Nota: Quest'ordine conteneva uno o più prodotti non più disponibili!</span>
+					<span class="error alert alert-warning">Warning: this order
+						contains one or more books not available anymore. It will be
+						shipped as soon as the item desider are back in stock!</span>
 				</div>
 			</c:if>
 
@@ -102,10 +106,10 @@
 				<h:form>
 					<table class="table">
 						<tr>
-							<th>isbn</th>
-							<th>title</th>
-							<th>price</th>
-							<th>Quantità</th>
+							<th>ISBN</th>
+							<th>Title</th>
+							<th>Price</th>
+							<th>Quantity</th>
 						</tr>
 
 						<c:forEach var="orderLine" items="#{currentOrder.orderLines}">
@@ -120,7 +124,7 @@
 								<td>${orderLine.quantity}</td>
 								<c:if test="${currentOrder.chiuso == false}">
 									<td><h:commandButton styleClass="btn btn-xs btn-danger"
-											action="#{orderController.deleteOrderLine}" value="Cancella">
+											action="#{orderController.deleteOrderLine}" value="Remove">
 											<f:param name="orderLineId" value="#{orderLine.id}" />
 										</h:commandButton></td>
 								</c:if>
@@ -136,7 +140,7 @@
 					<div class="form-group">
 						<div class="col-sm-offset-5 col-sm-2">
 							<h:commandButton styleClass="btn btn-success"
-								action="#{orderController.processedOrder}" value="Evadi ordine" />
+								action="#{orderController.processedOrder}" value="Ship order" />
 						</div>
 					</div>
 				</h:form>

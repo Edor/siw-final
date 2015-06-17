@@ -11,9 +11,7 @@
 </head>
 <body>
 	<f:view>
-		<!-- Menu' di testa -->
 		<jsp:include page="header.jsp" />
-		<!-- -------------- -->
 		<div align="center">
 			<h:form id="registrationCustomer" styleClass="form-horizontal">
 				<h:message for="signUpCustomer"

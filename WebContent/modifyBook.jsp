@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Change Book</title>
+<title>Book Shop - Edit ${bookController.book.title}</title>
 </head>
 <body>
 	<f:view>
@@ -21,7 +21,7 @@
 					<div class="col-sm-2">
 						<h:inputText styleClass="form-control"
 							value="#{bookController.book.title}" required="true"
-							requiredMessage="title is mandatory!" id="title" />
+							requiredMessage="This field is mandatory" id="title" />
 						<h:message for="title" style="color:red" />
 					</div>
 				</div>
@@ -30,7 +30,7 @@
 					<div class="col-sm-2">
 						<h:inputText styleClass="form-control"
 							value="#{bookController.book.isbn}" required="true"
-							requiredMessage="isbn is manfatory" id="isbn" />
+							requiredMessage="This field is mandatory" id="isbn" />
 						<h:message for="isbn" style="color:red" />
 					</div>
 				</div>
@@ -39,8 +39,8 @@
 					<div class="col-sm-2">
 						<h:inputText styleClass="form-control"
 							value="#{bookController.book.price}" required="true"
-							requiredMessage="price is mandatory!"
-							converterMessage="price is number!" id="price" />
+							requiredMessage="This field is mandatory"
+							converterMessage="This field must be a number" id="price" />
 						<h:message for="price" style="color:red" />
 					</div>
 				</div>
@@ -50,8 +50,8 @@
 					<div class="col-sm-2">
 						<h:inputText styleClass="form-control"
 							value="#{bookController.book.availability}" required="true"
-							requiredMessage="availability is mandatory!"
-							converterMessage="availability number!" id="availability" />
+							requiredMessage="This field is mandatory"
+							converterMessage="This field must be a number" id="availability" />
 						<h:message for="quantity" style="color:red" />
 					</div>
 				</div>
@@ -61,13 +61,13 @@
 					<div class="col-sm-2">
 						<h:inputText styleClass="form-control"
 							value="#{bookController.publisher}" required="true"
-							requiredMessage="publisher is mandatory!" id="publisher" />
+							requiredMessage="This field is mandatory" id="publisher" />
 						<h:message for="publisher" style="color:red" />
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-5 col-sm-2">
-						<h:commandButton value="Save change" styleClass="btn btn-primary"
+						<h:commandButton value="Save changes" styleClass="btn btn-primary"
 							action="#{bookController.updateBook}" />
 					</div>
 				</div>
@@ -83,7 +83,7 @@
 							<div class="col-sm-2">
 								<h:selectOneMenu styleClass="form-control" id="listAuthor"
 									value="#{bookController.authorNameDelete}" required="true"
-									requiredMessage="Seleziona elemento!">
+									requiredMessage="Select at least one element!">
 									<c:forEach var="Author" items="#{currentBook.authors}">
 										<f:selectItem itemValue="#{author.firstName}"
 											itemLabel="#{author.firstName}" />
@@ -92,7 +92,7 @@
 							</div>
 							<div class="col-sm-2">
 								<h:commandButton styleClass="btn btn-warning" id="removeAuthor"
-									value="Rimuovi autore e salva"
+									value="Remove author"
 									action="#{bookController.removeAuthor}" />
 							</div>
 						</div>
@@ -119,7 +119,7 @@
 							</div>
 							<div class="col-sm-2">
 								<h:commandButton styleClass="btn btn-success" id="removeAuthor"
-									value="add author and save"
+									value="Add author"
 									action="#{bookController.addAuthor}" />
 							</div>
 						</div>

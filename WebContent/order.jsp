@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
@@ -5,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Ordine n° ${currentOrder.id}</title>
+<title>Book Shop - Order # ${currentOrder.id}</title>
 </head>
 <body>
 	<f:view>
@@ -18,34 +20,34 @@
 				<br>
 			</c:if>
 
-			<h2>Ordine n° ${currentOrder.id}</h2>
+			<h2>Order # ${currentOrder.id}</h2>
 
 			<div>
-				Creato il:
+				Creation date:
 				<h:outputText value="#{currentOrder.creationTime.time}">
 					<f:convertDateTime dateStyle="medium" locale="it_IT" type="both"
 						timeZone="Europe/Rome" />
 				</h:outputText>
 			</div>
 			<div>
-				Stato:
+				Status:
 				<c:if test="${currentOrder.chiuso == false}">
-					<span class="label label-danger">Aperto</span>
+					<span class="label label-danger">Open</span>
 				</c:if>
 				<c:choose>
 					<c:when test="${currentOrder.evaso == true}">
-						<span class="label label-success">Evaso</span>
+						<span class="label label-success">Shipped</span>
 					</c:when>
 					<c:otherwise>
 						<c:if test="${currentOrder.chiuso == true}">
-							<span class="label label-warning">Completato</span>
+							<span class="label label-warning">Confirmed</span>
 						</c:if>
 					</c:otherwise>
 				</c:choose>
 			</div>
 			<c:if test="${currentOrder.completedTime != null }">
 				<div>
-					Data Completamento:
+					Confirmation time:
 					<h:outputText value="#{currentOrder.completedTime.time}">
 						<f:convertDateTime dateStyle="medium" locale="it_IT" type="both"
 							timeZone="Europe/Rome" />
@@ -54,7 +56,7 @@
 			</c:if>
 			<c:if test="${currentOrder.processedTime != null }">
 				<div>
-					Data Evasione:
+					Shipping day:
 					<h:outputText value="#{currentOrder.processedTime.time}">
 						<f:convertDateTime dateStyle="medium" locale="it_IT" type="both"
 							timeZone="Europe/Rome" />
@@ -65,31 +67,30 @@
 			<c:if test="${currentOrder.bookCancellato == true}">
 				<br>
 				<div>
-					<span class="error alert alert-warning">Nota: Quest'ordine,
-						conteneva uno o più prodotti non più disponibili! Verranno evasi
-						solo quelli disponibili (visibili qui sotto)!</span>
+					<span class="error alert alert-warning">Warning: this order
+						contains one or more books not available anymore. It will be
+						shipped as soon as the item desider are back in stock!</span>
 				</div>
 			</c:if>
 			<br>
 			<c:if test="${currentOrder.chiuso == false}">
-				<h4>Per aggiungere prodotti all'ordine vai al catalogo
-					prodotti!</h4>
+				<h4>In order to add more items to your order go back to the complete book page!</h4>
 				<br>
 				<h:form>
 					<h:commandButton styleClass="btn btn-success"
-						action="#{orderController.closeOrder}" value="Chiudi ordine" />
+						action="#{orderController.closeOrder}" value="Confirm order" />
 				</h:form>
 			</c:if>
 
 			<c:if test="${not empty currentOrder.orderLines}">
-				<h3>Prodotti in ordine</h3>
+				<h3>Books</h3>
 				<h:form>
 					<table class="table">
 						<tr>
-							<th>isbn</th>
-							<th>title</th>
-							<th>price</th>
-							<th>Quantità</th>
+							<th>ISBN</th>
+							<th>Title</th>
+							<th>Price</th>
+							<th>Quantity</th>
 						</tr>
 
 						<c:forEach var="orderLine" items="#{currentOrder.orderLines}">
@@ -104,7 +105,7 @@
 								<td>${orderLine.quantity}</td>
 								<c:if test="${currentOrder.chiuso == false}">
 									<td><h:commandButton styleClass="btn btn-xs btn-danger"
-											action="#{orderController.deleteOrderLine}" value="Cancella">
+											action="#{orderController.deleteOrderLine}" value="Remove">
 											<f:param name="orderLineId" value="#{orderLine.id}" />
 										</h:commandButton></td>
 								</c:if>
@@ -120,11 +121,11 @@
 				<c:if test="${not empty currentOrder.orderLines}">
 					<h:form styleClass="form-horizontal">
 						<div>
-							<h4>Modifica quantita' book:</h4>
+							<h4>Edit book quantity to be purchased</h4>
 						</div>
 						<div class="form-group">
 							<label for="isbnBook"
-								class="col-sm-1 control-label col-lg-offset-4">isbn Book
+								class="col-sm-1 control-label col-lg-offset-4">ISBN Book
 							</label>
 							<div class="col-sm-2">
 								<h:selectOneMenu styleClass="form-control"
@@ -139,8 +140,7 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="email" class="col-sm-1 control-label col-lg-offset-4">Nuova
-								Quantita':</label>
+							<label for="email" class="col-sm-1 control-label col-lg-offset-4">New quantity to be purchased:</label>
 							<div class="col-sm-2">
 								<h:inputText styleClass="form-control"
 									value="#{orderController.quantityNew}" required="true"
