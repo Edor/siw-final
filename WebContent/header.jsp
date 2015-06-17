@@ -38,7 +38,7 @@
 					<c:if
 						test="${administratorController.currentAdministrator != null}">
 						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#">Clienti<b class="caret"></b></a>
+							data-toggle="dropdown" href="#">Customers<b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><h:commandLink
 										action="#{customerController.listCustomers}"
@@ -46,15 +46,14 @@
 								<li><h:commandLink
 										action="#{administratorController.newCustomer}"
 										value="Registra un nuovo cliente" /></li>
-								<li><a href='<c:url value="deleteCustomer.jsp" />'>Elimina
-										un cliente registrato</a></li>
+								<li><a href='<c:url value="deleteCustomer.jsp" />'>Delete existing customer</a></li>
 								<li class="divider"><h:commandLink
 										action="#{administratorController.listClosedOrders}"
 										value="Ordini da evadere" /></li>
 							</ul></li>
 
 						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown">Operazioni amministrazione<b
+							data-toggle="dropdown">Admin operations<b
 								class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><h:commandLink
@@ -69,18 +68,17 @@
 					<!-- Menu a tendina utente -->
 					<c:if test="${customerController.currentCustomer != null}">
 						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#">Operazioni utente<b
+							data-toggle="dropdown" href="#">User operations<b
 								class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><h:commandLink action="#{orderController.createOrder}"
 										value="Crea un nuovo ordine" /></li>
-								<li><a href="#">lista ordini effetuati</a> <!--<h:commandLink
+								<li><a href="#">Order list</a> <!--<h:commandLink
 										action="#{customerController.listOrders}"
 										value="Lista ordini già effettuati" />--></li>
 							</ul></li>
 						<c:if test="${currentOrder != null}">
-							<li><a href='<c:url value="order.jsp" />'>Torna
-									all'ordine corrente n° ${currentOrder.id}</a></li>
+							<li><a href='<c:url value="order.jsp" />'>Select order # ${currentOrder.id}</a></li>
 							<p>
 						</c:if>
 					</c:if>
@@ -90,16 +88,14 @@
 				<ul class="nav navbar-nav navbar-right">
 					<c:if
 						test="${administratorController.currentAdministrator != null}">
-						<li><a href='<c:url value="administratorPage.jsp" />'>Il
-								mio profilo: <strong>${administratorController.currentAdministrator.nickname}</strong>
+						<li><a href='<c:url value="administratorPage.jsp" />'>Profile: <strong>${administratorController.currentAdministrator.nickname}</strong>
 						</a></li>
 						<li><h:commandLink value="Logout"
 								action="#{administratorController.logoutAdministrator}" /></li>
 					</c:if>
 
 					<c:if test="${customerController.currentCustomer != null}">
-						<li><a href='<c:url value="customerPage.jsp" />'>Il mio
-								profilo: <b>${customerController.currentCustomer.firstName}
+						<li><a href='<c:url value="customerPage.jsp" />'>Profile: <b>${customerController.currentCustomer.firstName}
 									${customerController.currentCustomer.lastName}</b>
 						</a></li>
 						<li><h:commandLink value="Logout"
@@ -109,13 +105,13 @@
 					<c:if
 						test="${administratorController.currentAdministrator == null && customerController.currentCustomer == null}">
 						<li><a href='<c:url value="login.jsp" />'>Login</a></li>
-						<li><a href='<c:url value="customerRegistration.jsp" />'>Registrati</a></li>
+						<li><a href='<c:url value="customerRegistration.jsp" />'>Sign up</a></li>
 						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#">Amministrazione<b
+							data-toggle="dropdown" href="#">Administration<b
 								class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href='<c:url value="loginAdministrator.jsp" />'>Login
-										amministratore</a></li>
+										admin</a></li>
 							</ul></li>
 					</c:if>
 				</ul>
