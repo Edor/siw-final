@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Cancella cliente</title>
+<title>Book Shop - Delete a customer</title>
 </head>
 <body>
 	<f:view>
@@ -18,9 +18,9 @@
 				<h:message for="deleteCustomer"
 					styleClass="error alert alert-danger" />
 				<div>
-					<h2>Elimina un cliente</h2>
-					<h5>Inserisci l'e-mail (Attenzione: Verranno eliminati tutti i
-						suoi ordini associati "operazione irreversibile")</h5>
+					<h2>Delete a customer</h2>
+					<h5>Insert a valid e-mail address to delete the relative user.
+					WARNING: this operation is not reversible!</h5>
 				</div>
 				<div class="form-group">
 					<label for="email" class="col-sm-1 control-label col-lg-offset-4">Email</label>

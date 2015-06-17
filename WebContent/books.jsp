@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -5,13 +7,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Library</title>
+<title>Book List</title>
 </head>
 <body>
 	<f:view>
 		<jsp:include page="header.jsp" />
 		<div align="center">
-			<h1>library</h1>
+			<h1>Book list</h1>
 			<h:form>
 				<table class="table">
 					<tr>

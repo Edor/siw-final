@@ -4,13 +4,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Pagina cliente</title>
+<title>Book Shop - ${customerController.currentCustomer.firstName} ${customerController.currentCustomer.lastName}</title>
 </head>
 <body>
 	<f:view>
 		<jsp:include page="header.jsp" />
 		<div align="center">
-			<h2>Info cliente</h2>
+			<h2>Details for customer:</h2>
 			<address>
 				<strong>${customerController.currentCustomer.firstName}
 					${customerController.currentCustomer.lastName}</strong><br>
@@ -19,25 +19,23 @@
 				${customerController.currentCustomer.address.city},
 				(${customerController.currentCustomer.address.country})<br>
 				${customerController.currentCustomer.address.state}<br> <abbr
-					title="Telefono">Tel:</abbr>
+					title="Telefono">Phone:</abbr>
 				${customerController.currentCustomer.phoneNumber}
 			</address>
 			<div>
-				Data di Nascita:
+				Date of birth:
 				<h:outputText
 					value="#{customerController.currentCustomer.dateOfBirth}">
 					<f:convertDateTime dateStyle="medium" locale="it_IT" type="date" />
 				</h:outputText>
 			</div>
 			<div>
-				Data di Registrazione:
+				Registration date:
 				<h:outputText
 					value="#{customerController.currentCustomer.registrationDate.time}">
 					<f:convertDateTime dateStyle="medium" locale="it_IT" type="both"
 						timeZone="Europe/Rome" />
 				</h:outputText>
-			</div>
-			<h3><strong><em>Scegli un'operazione sulla barra superiore per iniziare!</em></strong></h3>
 		</div>
 	</f:view>
 </body>

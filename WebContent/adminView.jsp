@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Amministrazione</title>
+<title>Book Shop - Administration</title>
 </head>
 <body>
 	<f:view>
@@ -16,8 +16,7 @@
 				<span class="error alert alert-success">${administratorController.message }</span>
 				<br>
 			</c:if>
-			<h1>Pagina di amministrazione</h1>
-			<h3><strong><em>Scegli un'operazione sulla barra superiore per iniziare!</em></strong></h3>
+			<h1>Administration</h1>
 		</div>
 	</f:view>
 </body>

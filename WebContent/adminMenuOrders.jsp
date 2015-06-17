@@ -5,22 +5,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Ordini da evadere</title>
+<title>Book Shop - Confirmed orders</title>
 </head>
 <body>
 	<f:view>
 		<jsp:include page="header.jsp" />
 		<div align="center">
-			<h1>Ordini</h1>
+			<h1>Orders</h1>
 			<h:form>
 				<table class="table">
 					<tr>
-						<th>Cod</th>
-						<th>Customer Associate</th>
+						<th>ID</th>
+						<th>Customer</th>
 						<th>Creating Sata</th>
 						<th>Status</th>
-						<th>Date Completed</th>
-						<th>Date Shipping</th>
+						<th>Confirmation date</th>
+						<th>Shipping date</th>
 					</tr>
 					<c:forEach var="order" items="#{administratorController.orders}">
 						<tr>

@@ -23,7 +23,6 @@ public class Administrator {
 		return this.password.equals(password);
 	}
 	
-	// ***** Getters and setters *****
 	
 	public Long getId() {
 		return id;

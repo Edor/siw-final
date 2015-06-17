@@ -5,21 +5,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Catalogo prodotti</title>
+<title>Catalog</title>
 </head>
 <body>
 	<f:view>
 		<jsp:include page="header.jsp" />
 		<div align="center">
-			<h1>Ordini effettuati</h1>
+			<h1>Orders</h1>
 			<h:form>
 				<table class="table">
 					<tr>
-						<th>Codice</th>
-						<th>Data creazione</th>
-						<th>Stato</th>
-						<th>Data completamento</th>
-						<th>Data evasione</th>
+						<th>ID</th>
+						<th>Creation date</th>
+						<th>Status</th>
+						<th>Confirmation date</th>
+						<th>Shipping date</th>
 					</tr>
 					<c:forEach var="order" items="#{customerController.orders}">
 						<tr>
@@ -34,14 +34,14 @@
 								</h:outputText></td>
 
 							<td><c:if test="${order.chiuso == false}">
-									<span class="label label-danger">Aperto</span>
+									<span class="label label-danger">Open</span>
 								</c:if> <c:choose>
 									<c:when test="${order.evaso == true}">
-										<span class="label label-success">Evaso</span>
+										<span class="label label-success">Shipped</span>
 									</c:when>
 									<c:otherwise>
 										<c:if test="${order.chiuso == true}">
-											<span class="label label-warning">Completato</span>
+											<span class="label label-warning">Confirmed</span>
 										</c:if>
 									</c:otherwise>
 								</c:choose></td>

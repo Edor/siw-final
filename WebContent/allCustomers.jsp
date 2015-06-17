@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Utenti registrati</title>
+<title>Book Shop - Registered users</title>
 </head>
 <body>
 	<f:view>
@@ -13,16 +13,16 @@
 		<jsp:include page="header.jsp" />
 		<!-- -------------- -->
 		<div align="center">
-			<h1>Clienti registrati</h1>
+			<h1>Registered users</h1>
 
 			<h:form>
 				<table class="table">
 					<tr>
 						<th>E-mail</th>
-						<th>Nome</th>
-						<th>Cognome</th>
-						<th>Telefono</th>
-						<th>Data Registrazione</th>
+						<th>First name</th>
+						<th>Last name</th>
+						<th>Phone #</th>
+						<th>Registration date</th>
 					</tr>
 					<c:forEach var="customer" items="#{customerController.customers}">
 						<tr>

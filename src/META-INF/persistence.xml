@@ -6,7 +6,8 @@
 		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
 		<jta-data-source>PostgreSQL Database</jta-data-source>
 		<class>model.Address</class>
-		<class>model.Users</class>
+		<class>model.Customer</class>
+		<class>model.Administrator</class>
 		<class>model.OrderLine</class>
 		<class>model.Orders</class>
 		<class>model.Book</class>
